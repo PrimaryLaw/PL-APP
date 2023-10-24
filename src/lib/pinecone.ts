@@ -32,6 +32,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
   }
   console.log("loading pdf into memory" + file_name);
   const loader = new PDFLoader(file_name);
+
   const pages = (await loader.load()) as PDFPage[];
 
   // 2. split and segment the pdf
@@ -42,6 +43,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
 
   // 4. upload to pinecone
   const client = await getPineconeClient();
+
   const pineconeIndex = await client.index("chatpdf");
   const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
 
