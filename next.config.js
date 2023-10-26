@@ -6,7 +6,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  webpack: (config, { isServer, nextRuntime, webpack }) => {
+  /*webpack: (config, { isServer, nextRuntime, webpack }) => {
     // Avoid AWS SDK Node.js require issue
     if (isServer && nextRuntime === "nodejs") {
       config.plugins.push(
@@ -19,7 +19,7 @@ const nextConfig = {
     })
 
     return config;
-  },
+  },*/
 };
 
 module.exports = nextConfig;

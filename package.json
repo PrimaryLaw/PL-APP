@@ -12,7 +12,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.28.0",
     "@aws-sdk/signature-v4-crt": "^3.437.0",
-    "@clerk/nextjs": "^4.23.3",
+    "@clerk/nextjs": "^4.25.7",
     "@neondatabase/serverless": "^0.6.0",
     "@pinecone-database/doc-splitter": "^0.0.1",
     "@pinecone-database/pinecone": "^1.0.1",
@@ -37,7 +37,7 @@
     "langchain": "^0.0.150",
     "lucide-react": "^0.274.0",
     "md5": "^2.3.0",
-    "next": "13.4.7",
+    "next": "^14.0.0",
     "openai-edge": "^1.2.2",
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^3.10.111",
