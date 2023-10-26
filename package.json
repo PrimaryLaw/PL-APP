@@ -6,7 +6,8 @@
     "dev": "export NODE_OPTIONS='--max-old-space-size=8192' && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-to-prod": "netlify deploy --build --prod"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.414.0",
@@ -22,6 +23,7 @@
     "@types/react-dom": "18.2.7",
     "ai": "^2.2.11",
     "autoprefixer": "10.4.15",
+    "aws-crt": "^1.18.2",
     "axios": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -50,5 +52,9 @@
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.41.1",
+    "netlify-cli": "^16.9.2"
   }
 }
