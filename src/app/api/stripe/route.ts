@@ -7,6 +7,8 @@ import { auth, currentUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic"
+
 const return_url = process.env.NEXT_BASE_URL + "/";
 
 export async function GET() {
