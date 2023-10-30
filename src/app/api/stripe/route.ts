@@ -61,7 +61,7 @@ export async function GET() {
     });
     return NextResponse.json({ url: stripeSession.url });
   } catch (error) {
-    console.log("stripe error", error);
-    return new NextResponse("internal server error", { status: 500 });
+    console.log("stripe error, route.ts", error);
+    return new NextResponse("Stripe: Internal server error", { status: 500 });
   }
 }
