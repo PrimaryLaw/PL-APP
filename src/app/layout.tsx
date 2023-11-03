@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ChatPDF YT",
+  title: "PrimaryLaw.ai",
 };
 
 export default function RootLayout({
@@ -17,7 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      elements: {
+        footer: "hidden",
+      },
+    }}>
       <Providers>
         <html lang="en">
           <body className={inter.className}>{children}</body>
