@@ -1,5 +1,6 @@
 import ChatComponent from "@/components/ChatComponent";
 import ChatSideBar from "@/components/ChatSideBar";
+import TopBar from "@/components/TopBar";
 import PDFViewer from "@/components/PDFViewer";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
@@ -32,22 +33,25 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   const isPro = await checkSubscription();
 
   return (
-    <div className="flex  overflow-scroll">
+    <main className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
+         <TopBar/>
       <div className="flex w-full h-[100vh] overflow-scroll">
+  
+   
         {/* chat sidebar */}
         <div className="flex-[1] max-w-xs">
           <ChatSideBar chats={_chats} chatId={parseInt(chatId)} isPro={isPro} />
         </div>
         {/* pdf viewer */}
-        <div className="h-[100vh] p-4 oveflow-scroll flex-[5]">
+        <div className="h-[100vh] px-2 py-5 rounded-lg border border-defaultWhite oveflow-scroll bg-defaultWhite flex-[4]">
           <PDFViewer pdf_url={currentChat?.pdfUrl || ""} />
         </div>
         {/* chat component */}
-        <div className="flex-[3] border-l-4 border-l-slate-200">
+        <div className="flex-[4]  border-l-slate-200">
           <ChatComponent chatId={parseInt(chatId)} />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -28,6 +28,11 @@ module.exports = {
         normalGrey: '#676666',
         fromBlue: '#001d47',
         toBlue: '#021128',
+        mainGrey: '#f8f9fa',
+        defaultWhite: '#ffffff',
+        mainGreen: '#04b88f',
+        darkGreen: '#0b4d3e',
+        transparentGreen: '#07b38c33',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
