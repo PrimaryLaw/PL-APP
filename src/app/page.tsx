@@ -98,7 +98,7 @@ export default async function Home() {
           <div className="flex mt-2">
             {isAuth && firstChat && (
               <>
-                <Link href={`/chat/${firstChat.id}`}>
+                <Link href={`/chatproduct/${firstChat.id}`}>
                   <Button>
                     Go to Chats <ArrowRight className="ml-2" />
                   </Button>
