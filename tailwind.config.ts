@@ -33,6 +33,7 @@ module.exports = {
         mainGreen: '#04b88f',
         darkGreen: '#0b4d3e',
         transparentGreen: '#07b38c33',
+        allblack: '#000000',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -70,6 +71,7 @@ module.exports = {
       height: {
         '128' : '100vh',
         '129' : '85vh',
+        '130' :'74vh',
       },
       keyframes: {
         "accordion-down": {

@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Inter } from 'next/font/google'
 import { UserButton, auth } from "@clerk/nextjs";
 import Link from "next/link";
 import { ArrowRight, LogIn } from "lucide-react";
 import FileUpload from "@/components/FileUpload";
 import { checkSubscription } from "@/lib/subscription";
+import MainNav from "@/components/MainNav";
+import MainFooter from "@/components/MainFooter";
 import SubscriptionButton from "@/components/SubscriptionButton";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
+import { ThemeProvider } from "next-themes"
+
 
 export default async function Home() {
   const { userId } = await auth();
@@ -24,8 +29,10 @@ export default async function Home() {
 
   
   return (
+
     <div className="w-screen min-h-screen bg-black">
-      <div className="flex h-screen">
+      <MainNav/>
+      <div className="flex h-[74vh]">
         <div className="flex-1 bg-gradient-to-t from-black to-blue-900 content-protected hidden">
           {/* Content for the left side */}
           <div className="flex items-center">
@@ -91,7 +98,7 @@ export default async function Home() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 content-login ">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-center ">
-            <h1 className="mr-3 text-8xl bg-gradient-to-r from-gray-50 to-blue-900 bg-clip-text text-transparent font-bold">PRIMARYLAW.AI</h1>
+            <h1 className="mr-3  bg-gradient-to-tl lg:text-8xl md:text-base sm:text-base from-mainGreen to-darkGreen bg-clip-text text-transparent font-bold">PRIMARYLAW.AI</h1>
             <UserButton afterSignOutUrl="/" />
           </div>
 
@@ -110,7 +117,7 @@ export default async function Home() {
             )}
           </div>
 
-          <p className="max-w-xl mt-1 text-lg text-white font-thin">
+          <p className="max-w-xl mt-1 text-lg text-normalGrey font-thin">
             We're lauching soon! 
           </p>
 
@@ -119,7 +126,7 @@ export default async function Home() {
               <FileUpload />
             ) : (
               <Link href="/sign-in">
-                <Button>
+                <Button className="bg-allblack border border-mainGreen">
                   Login (test users only)
                   <LogIn className="w-4 h-4 ml-2" />
                 </Button>
@@ -128,6 +135,9 @@ export default async function Home() {
           </div>
         </div>
       </div>
+      <MainFooter/>
     </div>
+    
+    
   );
 }
