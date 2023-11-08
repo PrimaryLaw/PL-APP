@@ -34,6 +34,7 @@ module.exports = {
         darkGreen: '#0b4d3e',
         transparentGreen: '#07b38c33',
         allblack: '#000000',
+        greyBg: '#f8f9fa',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

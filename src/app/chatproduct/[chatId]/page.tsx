@@ -1,5 +1,6 @@
 import ChatComponent from "@/components/ChatComponent";
 import ChatSideBar from "@/components/ChatSideBar";
+import TopBar from "@/components/TopBar";
 import PDFViewer from "@/components/PDFViewer";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
@@ -15,7 +16,7 @@ type Props = {
   };
 };
 
-const ChatProductPage = async ({ params: { chatId } }: Props) => {
+const ChatProduct = async ({ params: { chatId } }: Props) => {
   const { userId } = await auth();
   if (!userId) {
     return redirect("/sign-in");
@@ -32,81 +33,77 @@ const ChatProductPage = async ({ params: { chatId } }: Props) => {
   const isPro = await checkSubscription();
 
   return (
-
-    {/* 
-  
-  
-  
-  
-  
-  */}
-    <div className="flex min-h-screen justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
-  <div className="from-toBlue to-fromBlue max-h-64 flex rounded-2xl bg-gradient-to-t px-6 pb-8 pt-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:px-10" id="legislative-tool">
-    <div className="mx-auto max-w-md">
-      <div className="divide-greyDisabled divide-y">
-        <div className="pt-3 text-base font-semibold leading-7">
-          <h2 className="text-3xl text-white">Legislative chat</h2>
-          <button type="button" className="my-3 mr-2 rounded-lg border border-blue-700 px-5 py-2.5 text-center text-sm font-medium text-blue-700 text-white hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800">Access</button>
+     <main className="bg-greyBg ease-soft-in-out  relative h-full max-h-screen rounded-xl transition-all duration-200">
+      <div className="w-full px-6 py-6 mx-auto">
+    <div className="flex flex-wrap -mx-3 ">
+    <div className="max-w-full px-3 lg:w-2/3 lg:flex-none">
+      <div className="flex flex-wrap -mx-3">
+      
+        <div className="w-full max-w-full px-3 xl:w-2/2 xl:flex-none">
+          <div className="flex flex-wrap -mx-3">
+            <div className="w-full max-w-full px-3 md:w-1/2 md:flex-none">
+              <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                <div className="p-4 mx-6 mb-0 justify-center text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
+                    <i className="relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
+                  </div>
+                </div>
+                <div className="flex-auto p-4 pt-0 text-center">
+                  <h6 className="mb-0 text-center">Legislative chat</h6>
+                  <span className="leading-tight text-xs">Chat with Canadian legislative docs</span>
+                  <hr className="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+                  <div className="flex-none w-2/2 max-w-full px-3 text-right">
+                    <a className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;">Access</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full max-w-full px-3 mt-6 md:mt-0 md:w-1/2 md:flex-none">
+              <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                <div className="p-4 mx-6 justify-center mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
+                    <i className="relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
+                  </div>
+                </div>
+                <div className="flex-auto p-4 pt-0 text-center">
+                  <h6 className="mb-0 text-center">Contract Analizer</h6>
+                  <span className="leading-tight text-xs">Analize and get insights about your contract</span>
+                  <hr className="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+                  <div className="flex-none w-2/2 max-w-full px-3 text-right">
+                    <a className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-lg bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;">Access</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full max-w-full px-3 mt-6 md:mt-0 md:w-1/2 md:flex-none">
+              <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                <div className="p-4 mx-6 justify-center mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
+                    <i className="relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
+                  </div>
+                </div>
+                <div className="flex-auto p-4 pt-0 text-center">
+                  <h6 className="mb-0 text-center">Case Law</h6>
+                  <span className="leading-tight text-xs">Lorem Impsum</span>
+                  <hr className="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
+                  <div className="flex-none w-2/2 max-w-full px-3 text-right">
+                    <a className="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;">Access</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="space-y-6 pt-8 text-base leading-7 text-gray-600">
-          <ul className="space-y-4">
-            <li className="flex items-center">
-              <svg className="fill-sky1 stroke-sky2 h-6 w-6 flex-none stroke-2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="11" />
-                <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-              </svg>
-              <p className="ml-1 text-white">Enabled</p>
-            </li>
-          </ul>
-        </div>
+        
+            
       </div>
     </div>
+   
   </div>
-  <div className="from-toBlue to-fromBlue max-h-64 flex rounded-2xl bg-gradient-to-t px-6 pb-8 pt-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:px-10" id="legislative-tool">
-    <div className="mx-auto max-w-md">
-      <div className="divide-greyDisabled divide-y">
-        <div className="pt-3 text-base font-semibold leading-7">
-          <h2 className="text-3xl text-white">Contract Analysis</h2>
-          <button type="button" className="my-3 mr-2 rounded-lg border border-blue-700 px-5 py-2.5 text-center text-sm font-medium text-blue-700 text-white hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800">Access</button>
-        </div>
-        <div className="space-y-6 pt-8 text-base leading-7 text-gray-600">
-          <ul className="space-y-4">
-            <li className="flex items-center">
-              <svg className="fill-normalGrey stroke-greyDisabled h-6 w-6 flex-none stroke-2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="11" />
-                <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-              </svg>
-              <p className="text-greyDisabled ml-1">Disabled</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
-  <div className="from-toBlue to-fromBlue max-h-64 flex rounded-2xl bg-gradient-to-t px-6 pb-8 pt-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:px-10" id="legislative-tool">
-    <div className="mx-auto max-w-md">
-      <div className="divide-greyDisabled divide-y">
-        <div className="pt-3 text-base font-semibold leading-7">
-          <h2 className="text-3xl text-white">Legal research</h2>
-          <button type="button" className="my-3 mr-2 rounded-lg border border-blue-700 px-5 py-2.5 text-center text-sm font-medium text-blue-700 text-white hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800">Access</button>
-        </div>
-        <div className="space-y-6 pt-8 text-base leading-7 text-gray-600">
-          <ul className="space-y-4">
-            <li className="flex items-center">
-              <svg className="fill-normalGrey stroke-greyDisabled h-6 w-6 flex-none stroke-2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="11" />
-                <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-              </svg>
-              <p className="text-greyDisabled ml-1">Disabled</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  </main>
 
   );
 };
 
-export default ChatProductPage;
+export default ChatProduct;

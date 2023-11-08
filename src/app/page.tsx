@@ -106,7 +106,7 @@ export default async function Home() {
             {isAuth && firstChat && (
               <>
               {/* <Link href={`/chat/${firstChat.id}`}>*/}  
-              <Link href={`/chatproduct/`}>
+              <Link href={`/chatproduct/${firstChat.id}`}>
                   <Button className="text-grey">
                     See chats <ArrowRight className="ml-2" />
                   </Button>
