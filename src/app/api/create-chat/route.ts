@@ -16,7 +16,7 @@ export async function POST(req: Request, res: Response) {
     const body = await req.json();
     const { file_key, file_name } = body;
     console.log(file_key, file_name);
-    //await loadS3IntoPinecone(file_key);
+    await loadS3IntoPinecone(file_key);
 
     function removeExtension(filename: string) {
       return filename.replace(/\.[^/.]+$/, "");
