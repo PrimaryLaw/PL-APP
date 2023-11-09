@@ -40,11 +40,11 @@ const ChatProduct = async ({ params: { chatId } }: Props) => {
       <div className="flex flex-wrap -mx-3">
       
         <div className="w-full max-w-full px-3 xl:w-2/2 xl:flex-none">
-          <div className="flex flex-wrap -mx-3">
+          <div className="flex flex-nowrap -mx-3">
             <div className="w-full max-w-full px-3 md:w-1/2 md:flex-none">
               <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                <div className="p-4 mx-6 mb-0 justify-center text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
+                <div className="p-4 mx-6 mb-0 flex justify-center text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-mainGreen to-darkGreen shadow-soft-2xl rounded-xl">
                     <i className="relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
                   </div>
                 </div>
@@ -60,8 +60,8 @@ const ChatProduct = async ({ params: { chatId } }: Props) => {
             </div>
             <div className="w-full max-w-full px-3 mt-6 md:mt-0 md:w-1/2 md:flex-none">
               <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                <div className="p-4 mx-6 justify-center mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
+                <div className="p-4 mx-6 flex justify-center mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-mainGreen to-darkGreen shadow-soft-2xl rounded-xl">
                     <i className="relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
                   </div>
                 </div>
@@ -77,8 +77,8 @@ const ChatProduct = async ({ params: { chatId } }: Props) => {
             </div>
             <div className="w-full max-w-full px-3 mt-6 md:mt-0 md:w-1/2 md:flex-none">
               <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                <div className="p-4 mx-6 justify-center mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
+                <div className="p-4 mx-6 flex justify-center mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                  <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-mainGreen to-darkGreen shadow-soft-2xl rounded-xl">
                     <i className="relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
                   </div>
                 </div>
