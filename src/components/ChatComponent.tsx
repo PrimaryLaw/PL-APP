@@ -27,6 +27,7 @@ const ChatComponent = ({ chatId, userId }: Props) => {
     api: "/api/chat",
     body: {
       chatId,
+      userId
     },
     initialMessages: data || [],
   });
