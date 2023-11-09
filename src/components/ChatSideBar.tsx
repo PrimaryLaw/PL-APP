@@ -69,7 +69,7 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
             />
             <label
               htmlFor={`${document.id}`}
-              className="flex cursor-pointer items-center justify-between rounded-lg border border-mainGreen bg-white p-4 text-sm font-medium shadow-sm hover:border-mainGreen peer-checked:border-mainGreen px-8 peer-checked:text-defaultWhite peer-checked:bg-transparentGreen peer-checked:ring-1 peer-checked:ring-mainGreen"
+              className="flex cursor-pointer items-center justify-between rounded-lg border border-mainGreen bg-white p-4 text-sm font-medium shadow-sm hover:border-mainGreen peer-checked:border-mainGreen px-3 peer-checked:text-defaultWhite peer-checked:bg-transparentGreen peer-checked:ring-1 peer-checked:ring-mainGreen"
             >
               <p className="text-gray-700 whitespace-nowrap text-ellipsis">{document.name}</p>
               <p className="text-gray-900"></p>
