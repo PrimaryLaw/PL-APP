@@ -9,14 +9,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Message } from "ai";
 
-type Props = { chatId: number };
+type Props = { chatId: number, userId: string };
 
-const ChatComponent = ({ chatId }: Props) => {
+const ChatComponent = ({ chatId, userId }: Props) => {
   const { data, isLoading } = useQuery({
     queryKey: ["chat", chatId],
     queryFn: async () => {
       const response = await axios.post<Message[]>("/api/get-messages", {
         chatId,
+        userId
       });
       return response.data;
     },
@@ -40,12 +41,12 @@ const ChatComponent = ({ chatId }: Props) => {
   }, [messages]);
   return (
     <div
-      className="relative max-h-screen overflow-scroll"
+      className="relative h-[100vh] overflow-scroll"
       id="message-container"
     >
       {/* header */}
       <div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
-        <h3 className="text-xl font-bold">Chat</h3>
+        <h4 className="text-xl text-slate-700 font-bold">Your conversation</h4>
       </div>
 
       {/* message list */}
@@ -59,10 +60,10 @@ const ChatComponent = ({ chatId }: Props) => {
           <Input
             value={input}
             onChange={handleInputChange}
-            placeholder="Ask any question..."
+            placeholder="Send question"
             className="w-full"
           />
-          <Button className="bg-blue-600 ml-2">
+          <Button className="bg-mainGreen ml-2">
             <Send className="h-4 w-4" />
           </Button>
         </div>
