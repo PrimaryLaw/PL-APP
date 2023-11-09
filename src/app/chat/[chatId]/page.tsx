@@ -21,20 +21,24 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   if (!userId) {
     return redirect("/sign-in");
   }
-  const _chats = await db.select().from(chats).where(eq(chats.userId, userId));
+  const _chats = await db.select().from(chats);
+  console.log({_chats})
   if (!_chats) {
     return redirect("/");
   }
-  if (!_chats.find((chat) => chat.id === parseInt(chatId))) {
+
+  const currentChat = parseInt(chatId) !== 0 ? _chats.find((chat) => chat.id === parseInt(chatId)) : _chats[0];
+
+  if (!currentChat) {
     return redirect("/");
   }
 
-  const currentChat = _chats.find((chat) => chat.id === parseInt(chatId));
+  console.log({currentChat, chatId})
   const isPro = await checkSubscription();
 
   return (
     <main className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
-         <TopBar/>
+         <TopBar userId={userId} chatId={parseInt(chatId)} />
       <div className="flex w-full h-[100vh] overflow-scroll">
   
    
@@ -48,7 +52,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         </div>
         {/* chat component */}
         <div className="flex-[4]  border-l-slate-200">
-          <ChatComponent chatId={parseInt(chatId)} />
+          <ChatComponent userId={userId} chatId={parseInt(chatId)} />
         </div>
       </div>
     </main>

@@ -1,4 +1,3 @@
-import ChatComponent from "@/components/ChatComponent";
 import ChatSideBar from "@/components/ChatSideBar";
 import TopBar from "@/components/TopBar";
 import PDFViewer from "@/components/PDFViewer";
@@ -21,7 +20,7 @@ const ChatProduct = async ({ params: { chatId } }: Props) => {
   if (!userId) {
     return redirect("/sign-in");
   }
-  const _chats = await db.select().from(chats).where(eq(chats.userId, userId));
+  const _chats = await db.select().from(chats);
   if (!_chats) {
     return redirect("/");
   }

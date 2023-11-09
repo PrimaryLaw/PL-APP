@@ -18,7 +18,7 @@ const ProductsPage = async ({ params: { chatId } }: Props) => {
   if (!userId) {
     return redirect("/products");
   }
-  const _chats = await db.select().from(chats).where(eq(chats.userId, userId));
+  const _chats = await db.select().from(chats);
   if (!_chats) {
     return redirect("/products");
   }
