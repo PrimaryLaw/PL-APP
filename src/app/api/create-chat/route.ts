@@ -4,6 +4,7 @@ import { loadS3IntoPinecone } from "@/lib/pinecone";
 import { getS3Url } from "@/lib/s3";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import { StringifyOptions } from "querystring";
 
 // /api/create-chat
 export async function POST(req: Request, res: Response) {
@@ -16,10 +17,16 @@ export async function POST(req: Request, res: Response) {
     const { file_key, file_name } = body;
     console.log(file_key, file_name);
     await loadS3IntoPinecone(file_key);
+
+    function removeExtension(filename: string) {
+      return filename.replace(/\.[^/.]+$/, "");
+    }
+
     const chat_id = await db
       .insert(chats)
       .values({
         fileKey: file_key,
+        name: removeExtension(file_name),
         pdfName: file_name,
         pdfUrl: getS3Url(file_key),
         userId,

@@ -9,14 +9,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Message } from "ai";
 
-type Props = { chatId: number };
+type Props = { chatId: number, userId: string };
 
-const ChatComponent = ({ chatId }: Props) => {
+const ChatComponent = ({ chatId, userId }: Props) => {
   const { data, isLoading } = useQuery({
     queryKey: ["chat", chatId],
     queryFn: async () => {
       const response = await axios.post<Message[]>("/api/get-messages", {
         chatId,
+        userId
       });
       return response.data;
     },
@@ -26,6 +27,7 @@ const ChatComponent = ({ chatId }: Props) => {
     api: "/api/chat",
     body: {
       chatId,
+      userId
     },
     initialMessages: data || [],
   });

@@ -15,8 +15,10 @@ const openai = new OpenAIApi(config);
 
 export async function POST(req: Request) {
   try {
-    const { messages, chatId } = await req.json();
+    const { messages, chatId, userId } = await req.json();
+
     const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
+
     if (_chats.length != 1) {
       return NextResponse.json({ error: "chat not found" }, { status: 404 });
     }
@@ -58,6 +60,7 @@ export async function POST(req: Request) {
           chatId,
           content: lastMessage.content,
           role: "user",
+          userId
         });
       },
       onCompletion: async (completion) => {
@@ -66,6 +69,7 @@ export async function POST(req: Request) {
           chatId,
           content: completion,
           role: "system",
+          userId
         });
       },
     });

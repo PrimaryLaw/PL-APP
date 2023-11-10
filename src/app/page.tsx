@@ -13,6 +13,7 @@ import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { ThemeProvider } from "next-themes"
+import { redirect } from "next/navigation";
 
 
 export default async function Home() {
@@ -21,15 +22,17 @@ export default async function Home() {
   const isPro = await checkSubscription();
   let firstChat;
   if (userId) {
-    firstChat = await db.select().from(chats).where(eq(chats.userId, userId));
+    firstChat = await db.select().from(chats);
     if (firstChat) {
       firstChat = firstChat[0];
     }
   }
 
+  if (isAuth) {
+    //return redirect("/chat/0");
+  }
   
   return (
-
     <div className="w-screen min-h-screen bg-black">
       <MainNav/>
       <div className="flex h-[74vh]">
