@@ -19,7 +19,7 @@ import { redirect } from "next/navigation";
 export default async function Home() {
   const { userId } = await auth();
   const isAuth = !!userId;
-  const isPro = await checkSubscription();
+ // const isPro = await checkSubscription();
   let firstChat;
   if (userId) {
     firstChat = await db.select().from(chats);
@@ -115,7 +115,7 @@ export default async function Home() {
                   </Button>
                 </Link>
                 <div className="ml-3">
-                  <SubscriptionButton isPro={isPro} />
+               {/*  <SubscriptionButton isPro={isPro} />  */}  
                 </div>
               </>
             )}
