@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Inter } from 'next/font/google'
 import { UserButton, auth } from "@clerk/nextjs";
 import Link from "next/link";
 import { ArrowRight, LogIn } from "lucide-react";
 import FileUpload from "@/components/FileUpload";
-import { checkSubscription } from "@/lib/subscription";
 import MainNav from "@/components/MainNav";
 import MainFooter from "@/components/MainFooter";
-import SubscriptionButton from "@/components/SubscriptionButton";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
-import { ThemeProvider } from "next-themes"
-import { redirect } from "next/navigation";
 
 
 export default async function Home() {
@@ -127,7 +121,7 @@ export default async function Home() {
 
           <div className="w-full mt-4">
             {isAuth ? (
-              <FileUpload />
+              <FileUpload redirect_url="/chat" />
             ) : (
               <Link href="/sign-in">
                 <Button className="bg-allblack border border-mainGreen">

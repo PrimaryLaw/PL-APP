@@ -9,8 +9,9 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 // https://github.com/aws/aws-sdk-js-v3/issues/4126
+type Props = { redirect_url: string };
 
-const FileUpload = () => {
+const FileUpload = ({ redirect_url = '/chat' }: Props) => {
   const router = useRouter();
   const [uploading, setUploading] = React.useState(false);
   const { mutate, isLoading } = useMutation({
@@ -51,7 +52,7 @@ const FileUpload = () => {
         mutate(data, {
           onSuccess: ({ chat_id }) => {
             toast.success("Chat created!");
-            router.push(`/chat/${chat_id}`);
+            router.push(`${redirect_url}/${chat_id}`);
           },
           onError: (err) => {
             toast.error("Error creating chat");

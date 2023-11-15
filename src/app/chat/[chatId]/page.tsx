@@ -9,6 +9,7 @@ import { auth } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import React from "react";
+import VisualizationData from "@/components/VisualizationData"
 
 type Props = {
   params: {
@@ -52,7 +53,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         </div>
         {/* chat component */}
         <div className="flex-[4]  border-l-slate-200">
-          <ChatComponent userId={userId} chatId={parseInt(chatId)} />
+          <VisualizationData userId={userId} chatId={chatId} showInsights={false}/>
         </div>
       </div>
     </main>

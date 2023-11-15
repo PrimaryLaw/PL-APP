@@ -39,7 +39,7 @@ const ContractUpload = ({ pdf_name }: ContractUploadProps) => {
           <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
           
 
-          <FileUpload />
+          <FileUpload  redirect_url="/contractanalizer" />
 
 
             {/* 
