@@ -47,7 +47,7 @@ const ChatComponent = ({ chatId, userId }: Props) => {
     >
       {/* header */}
       <div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
-        <h4 className="text-xl text-slate-700 font-bold">Your conversation</h4>
+        <h4 className="text-xl text-slate-700 font-bold hidden">Your conversation</h4>
       </div>
 
       {/* message list */}

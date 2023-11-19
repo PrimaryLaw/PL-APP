@@ -2,6 +2,7 @@
 import { DrizzleChat } from "@/lib/db/schema";
 import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
 
 
 
@@ -48,7 +49,7 @@ const TopBar = () => {
                     </div>
                   </div>
                 </div>
-                <div>my contracts</div>
+                <Button>my contracts</Button>
 
               </div>
             </div>

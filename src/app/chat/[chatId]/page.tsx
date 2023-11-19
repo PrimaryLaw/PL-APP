@@ -59,8 +59,9 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   return (
     <main className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
          <TopBar userId={userId} chatId={parseInt(chatId)} />
-         <div className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
-         <div className="w-full mt-4">
+         <div className="ease-soft-in-out bg-mainGrey relative w-full flex sm:flex-none  rounded-xl transition-all duration-200">
+        {/* file upload */}
+         <div className=" w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
             {isAuth ? (
               <FileUpload />
             ) : (
@@ -72,6 +73,22 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
               </Link>
             )}
           </div>
+            {/* contract name  */}
+            <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-3/4">
+              <div className="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+                <div className="flex-auto p-6">
+                  <div className="flex flex-row -mx-3">
+                    <div className="flex items-center w-2/3 max-w-full px-3">
+                      <span className="mx-3" >Name:</span>
+                        <h5 className="mb-0 ml-4 font-bold text-mainGreen">
+                          nome do contracto 
+                        </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
          </div>
 
         
@@ -88,6 +105,11 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         </div>
         {/* chat component */}
         <div className="flex-[4]  border-l-slate-200">
+          <div className="flex justify-center">
+            <Button className="m-2">Chat</Button>
+            <Button className="m-2">Insights</Button>
+          </div>
+      
           <ChatComponent userId={userId} chatId={parseInt(chatId)} />
         </div>
       </div>
