@@ -14,6 +14,8 @@ import { chats } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { ThemeProvider } from "next-themes"
 import { redirect } from "next/navigation";
+import FileUpload from "@/components/FileUpload";
+
 
 
 export default async function Home() {
@@ -126,7 +128,7 @@ export default async function Home() {
           </p>
 
           <div className="w-full mt-4">
-          {/*   {isAuth ? (
+           {isAuth ? (
           <FileUpload /> 
             ) : (
               <Link href="/sign-in">
@@ -135,7 +137,7 @@ export default async function Home() {
                   <LogIn className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-            )} */}    
+            )}    
           </div>
         </div>
       </div>
