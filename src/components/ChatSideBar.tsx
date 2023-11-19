@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 type Props = {
   chats: DrizzleChat[];
   chatId: number;
-  isPro: boolean;
+//  isPro: boolean;
 };
 
 const ChatSideBar = ({ chats, chatId }: Props) => {
