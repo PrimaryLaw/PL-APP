@@ -24,7 +24,7 @@ const TopBar = () => {
           <li className="text-sm leading-normal">
             <a className="opacity-50 text-slate-700" href="javascript:;">Products</a>
           </li>
-          <li className="text-sm pl-2 capitalize font-semibold leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Legislation Chat</li>
+          <li className="text-sm pl-2 capitalize font-semibold leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Contract Analyzer</li>
         </ol>
   
       </nav>
@@ -32,12 +32,13 @@ const TopBar = () => {
       <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
       <div className=" flex items-center md:ml-auto md:pr-4 relative flex flex-col min-w-0 break-words bg-transparend rounded-lg border border-mainGreen shadow-soft-xl rounded-2xl bg-clip-border">
               <div className="flex-auto p-2 ">
-                <div className="flex flex-row -mx-3">
-                  <div className="flex items-center w-2/3 max-w-full px-3">
+                <div className="flex flex-row -mx-3 hidden">
+                  <div className="flex items-center w-2/3 max-w-full px-3 hidden">
                       <p className="mb-0 text-slate-700 font-bold">
                         New chat
                       </p>
                   </div>
+                  
                   <div className="px-3 text-right basis-1/3">
                     <div className="inline-block w-9 h-9 text-center rounded-lg bg-gradient-to-tl from-mainGreen to-darkGreen">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 ml-2 mt-2 text-defaultWhite">
@@ -47,6 +48,8 @@ const TopBar = () => {
                     </div>
                   </div>
                 </div>
+                <div>my contracts</div>
+
               </div>
             </div>
 
