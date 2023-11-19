@@ -61,7 +61,7 @@ const ChatComponent = ({ chatId, userId }: Props) => {
           <Input
             value={input}
             onChange={handleInputChange}
-            placeholder="Send message"
+            placeholder="Send question"
             className="w-full"
           />
           <Button className="bg-mainGreen ml-2">
