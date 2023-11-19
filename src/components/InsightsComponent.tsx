@@ -11,7 +11,7 @@ import { Message } from "ai";
 
 type Props = { chatId: number, userId: string };
 
-const ChatComponent = ({ chatId, userId }: Props) => {
+const InsightsComponent = ({ chatId, userId }: Props) => {
   const { data, isLoading } = useQuery({
     queryKey: ["chat", chatId],
     queryFn: async () => {
@@ -43,31 +43,14 @@ const ChatComponent = ({ chatId, userId }: Props) => {
   return (
     <div
       className="relative h-[70vh] overflow-scroll mx-3"
-      id="message-container"
+      id="insights-container"
     >
+      <p>TESTE</p>
     
 
-      {/* message list */}
-      <MessageList messages={messages} isLoading={isLoading} />
-
-      <form
-        onSubmit={handleSubmit}
-        className="sticky bottom-0 inset-x-0 px-2 py-4 bg-white"
-      >
-        <div className="flex">
-          <Input
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Send message"
-            className="w-full border border-mainGreen outline-none"
-          />
-          <Button className="bg-mainGreen ml-2">
-            <Send className="h-4 w-4" />
-          </Button>
-        </div>
-      </form>
+ 
     </div>
   );
 };
 
-export default ChatComponent;
+export default InsightsComponent;
