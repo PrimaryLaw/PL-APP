@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 
 
 
+
 import logo from "../assets/pl_logo.png";
 
 const TopBar = () => {
@@ -49,7 +50,7 @@ const TopBar = () => {
                 </div>
                 <div className="flex items-center md:ml-auto ">
                   <div className="transition-all duration-200 ease-nav-brand">
-                    <a href="https://www.creative-tim.com/learning-lab/tailwind/html/quick-start/soft-ui-dashboard/" target="_blank" className="inline-block w-full px-8 py-2 mb-0 text-xs font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro hover:shadow-soft-2xl hover:scale-102">My contracts</a>
+                    <a href="/contractslist/22"  className="inline-block w-full px-8 py-2 mb-0 text-xs font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro hover:shadow-soft-2xl hover:scale-102">My contracts</a>
                   </div>
                 </div>
 
