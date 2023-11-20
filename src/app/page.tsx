@@ -131,7 +131,7 @@ export default async function Home() {
             ) : (
               <Link href="/sign-in">
                 <Button className="bg-allblack border border-mainGreen">
-                  Login (test users only)
+                  Login (test users only!)
                   <LogIn className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
