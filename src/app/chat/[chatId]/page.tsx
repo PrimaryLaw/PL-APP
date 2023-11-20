@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ChatComponent from "@/components/ChatComponent";
+import InsightsComponent from "@/components/InsightsComponent";
 import ChatSideBar from "@/components/ChatSideBar";
 import { Button } from "@/components/ui/button";
 import TopBar from "@/components/TopBar";
@@ -111,6 +112,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
           </div>
       
           <ChatComponent userId={userId} chatId={parseInt(chatId)} />
+          <InsightsComponent userId={userId} chatId={parseInt(chatId)} />
         </div>
       </div>
     </main>

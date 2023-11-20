@@ -11,7 +11,7 @@ import { Message } from "ai";
 
 type Props = { chatId: number, userId: string };
 
-const ChatComponent = ({ chatId, userId }: Props) => {
+const InsightsComponent = ({ chatId, userId }: Props) => {
   const { data, isLoading } = useQuery({
     queryKey: ["chat", chatId],
     queryFn: async () => {
@@ -45,32 +45,38 @@ const ChatComponent = ({ chatId, userId }: Props) => {
       className="relative h-[100vh] overflow-scroll"
       id="message-container"
     >
-      {/* header */}
-      <div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
-        <h4 className="text-xl text-slate-700 font-bold hidden">Your conversation</h4>
-      </div>
-
-      {/* message list */}
-      <MessageList messages={messages} isLoading={isLoading} />
-
-      <form
-        onSubmit={handleSubmit}
-        className="sticky bottom-0 inset-x-0 px-2 py-4 bg-white"
-      >
+      <div className="flex flex-col col">
         <div className="flex">
-          <Input
-            value={input} // "sumarizze this contract"
-            onChange={handleInputChange}
-            placeholder="Send message"
-            className="w-full"
-          />
-          <Button className="bg-mainGreen ml-2">
-            <Send className="h-4 w-4" />
-          </Button>
+        <p className="mx-4">Sumarizze</p>
+        <button className="bg-mainGreen" id="1-sumarizze">Generate</button>
         </div>
-      </form>
+    
+
+        <div className="border border-mainGreen">
+          <ul>
+            <li>- this is a contract document in name of lorem impsum</li>
+            <li>- this contract talks about lorem impsum </li>
+            <li>- lorem impsum lorem impsum lorem impsum </li>
+            </ul>
+        </div>
+      </div>
+      <div className="flex flex-col col">
+        <div className="flex">
+        <p className="mx-4">Legal Liabilities</p>
+        <button className="bg-mainGreen" id="1-liabilities">Generate</button>
+        </div>
+    
+
+        <div className="border border-mainGreen">
+          <ul>
+            <li>- this is a contract document in name of lorem impsum</li>
+            <li>- this contract talks about lorem impsum </li>
+            <li>- lorem impsum lorem impsum lorem impsum </li>
+            </ul>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default ChatComponent;
+export default InsightsComponent;
