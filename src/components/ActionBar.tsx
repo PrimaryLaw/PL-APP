@@ -25,7 +25,7 @@ const ActionBar = ({ params: { chatId } }: Props) => {
   useEffect(() => {
     const fetchUserId = async () => {
       const { userId } = await auth();
-   //   setUserId(userId);
+      setUserId(userId);
     };
 
     fetchUserId();
@@ -51,12 +51,12 @@ const ActionBar = ({ params: { chatId } }: Props) => {
       >
         Insights
       </Button>
-        {/* 
+
       {showChat ? (
         <ChatComponent userId={userId} chatId={parseInt(chatId)} />
       ) : (
         <InsightsComponent userId={userId} chatId={parseInt(chatId)} />
-      )} */}
+      )}
     </div>
   );
 };

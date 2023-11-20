@@ -80,7 +80,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
                     <div className="flex items-center w-2/3 max-w-full px-3">
                       <span className=" mx-1 opacity-50 text-slate-700" >Name:</span>
                         <h6 className="mb-0 ml-2 text-sm  capitalize font-semibold leading-normal text-mainGreen">
-                          #ContractName
+                          nome do contracto 
                         </h6>
                     </div>
                   </div>
@@ -129,7 +129,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
             <ChatComponent userId={userId} chatId={parseInt(chatId)} />
    
-          {/* <InsightsComponent userId={userId} chatId={parseInt(chatId)} />  */}  
+            <InsightsComponent userId={userId} chatId={parseInt(chatId)} /> 
          
         </div>
              
