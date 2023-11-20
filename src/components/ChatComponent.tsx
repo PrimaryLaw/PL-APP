@@ -42,10 +42,13 @@ const ChatComponent = ({ chatId, userId }: Props) => {
   }, [messages]);
   return (
     <div
-      className="relative h-[70vh] overflow-scroll mx-3"
+      className="relative h-[100vh] overflow-scroll"
       id="message-container"
     >
-    
+      {/* header */}
+      <div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
+        <h4 className="text-xl text-slate-700 font-bold hidden">Your conversation</h4>
+      </div>
 
       {/* message list */}
       <MessageList messages={messages} isLoading={isLoading} />
@@ -59,7 +62,7 @@ const ChatComponent = ({ chatId, userId }: Props) => {
             value={input}
             onChange={handleInputChange}
             placeholder="Send message"
-            className="w-full border border-mainGreen outline-none"
+            className="w-full"
           />
           <Button className="bg-mainGreen ml-2">
             <Send className="h-4 w-4" />
