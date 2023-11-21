@@ -6,7 +6,7 @@ import ChatSideBar from "@/components/ChatSideBar";
 import { Button } from "@/components/ui/button";
 import TopBar from "@/components/TopBar";
 import Link from "next/link";
-import { ArrowRight, LogIn } from "lucide-react";
+import { ArrowRight, LogIn, Scale } from "lucide-react";
 import FileUpload from "@/components/FileUpload";
 import PDFViewer from "@/components/PDFViewer";
 import { db } from "@/lib/db";
@@ -73,7 +73,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
           
           </div>
             {/* contract name  */}
-            <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-3/4">
+            <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-2/4">
               <div className="relative flex flex-col min-w-0 break-words bg-white  rounded-2xl bg-clip-border">
                 <div className="flex-auto p-6">
                   <div className="flex flex-row -mx-3">
@@ -83,6 +83,19 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
                           #ContractName
                         </h6>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
+              <div className="relative flex flex-col min-w-0 break-words bg-white  rounded-2xl bg-clip-border">
+                <div className="flex-auto px-6 py-3">
+                  <div className="flex flex-row -mx-3">
+                    <button className="flex items-center w-2/3 max-w-full border rounded-xl p-3 text-sm  font-semibold leading-normal text-mainGreen">
+                    <Scale className="w-6 h-6 text-mainGreen mr-2" /> 
+                        Talk to a Lawyer
+                    </button>
                   </div>
                 </div>
               </div>
@@ -127,9 +140,9 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
           </div>
       
 
-            <ChatComponent userId={userId} chatId={parseInt(chatId)} />
+          {/*  <ChatComponent userId={userId} chatId={parseInt(chatId)} />*/} 
    
-          {/* <InsightsComponent userId={userId} chatId={parseInt(chatId)} />  */}  
+           <InsightsComponent userId={userId} chatId={parseInt(chatId)} />   
          
         </div>
              
