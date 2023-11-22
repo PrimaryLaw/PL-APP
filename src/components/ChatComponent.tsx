@@ -52,10 +52,12 @@ const ChatComponent = ({ chatId, userId }: Props) => {
   // Rendering the chat component UI.
   return (
     <div
-      className="relative h-[70vh] overflow-scroll mx-3"
+      className="relative h-[100vh] overflow-scroll"
       id="message-container"
     >
+
       {/* Rendering the list of messages */}
+
       <MessageList messages={messages} isLoading={isLoading} />
 
       {/* Form for sending messages */}
@@ -66,10 +68,10 @@ const ChatComponent = ({ chatId, userId }: Props) => {
         <div className="flex">
           {/* Input for typing messages */}
           <Input
-            value={input}
+            value={input} // "sumarizze this contract"
             onChange={handleInputChange}
             placeholder="Send message"
-            className="w-full border border-mainGreen outline-none"
+            className="w-full"
           />
           {/* Button for submitting messages */}
           <Button className="bg-mainGreen ml-2">

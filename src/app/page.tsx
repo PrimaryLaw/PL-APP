@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import { UserButton, auth } from "@clerk/nextjs";
 import Link from "next/link";
 import { ArrowRight, LogIn } from "lucide-react";
-import FileUpload from "@/components/FileUpload";
+//import FileUpload from "@/components/FileUpload";
 import { checkSubscription } from "@/lib/subscription";
 import MainNav from "@/components/MainNav";
 import MainFooter from "@/components/MainFooter";
@@ -126,8 +126,8 @@ export default async function Home() {
           </p>
 
           <div className="w-full mt-4">
-          {isAuth ? (
-           <FileUpload /> 
+          {/*   {isAuth ? (
+          <FileUpload /> 
             ) : (
               <Link href="/sign-in">
                 <Button className="bg-allblack border border-mainGreen">
@@ -135,7 +135,7 @@ export default async function Home() {
                   <LogIn className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-            )}    
+            )} */}    
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
+import React, { useState } from "react";
 import ChatComponent from "@/components/ChatComponent";
-import InsightsComponent from "@/components/InsightsComponent";
+//import InsightsComponent from "@/components/InsightsComponent";
 import ChatSideBar from "@/components/ChatSideBar";
 import { Button } from "@/components/ui/button";
 import TopBar from "@/components/TopBar";
@@ -15,10 +16,11 @@ import { redirect } from "next/navigation";
 import { ThemeProvider } from "next-themes"
 import { checkSubscription } from "@/lib/subscription";
 import MainNav from "@/components/MainNav";
-import MainFooter from "@/components/MainFooter"
+import MainFooter from "@/components/MainFooter";
 import { Inter } from 'next/font/google'
 import ActionBar from "@/components/ActionBar";
 import ContainerChat from "@/components/ContainerChat";
+
 
 
 type Props = {
@@ -56,39 +58,32 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
   return (
     <main className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
-      <TopBar userId={userId} chatId={parseInt(chatId)} />
-      <div className="ease-soft-in-out bg-mainGrey relative w-full mb-3 flex sm:flex-none  rounded-xl transition-all duration-200">
+
+         <TopBar userId={userId} chatId={parseInt(chatId)} />
+         <div className="ease-soft-in-out bg-mainGrey relative w-full flex sm:flex-none  rounded-xl transition-all duration-200">
         {/* file upload */}
-        <div className=" w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
-
-          <FileUpload />
-
-        </div>
-        {/* contract name  */}
-        <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-2/4">
-          <div className="relative flex flex-col min-w-0 break-words bg-white  rounded-2xl bg-clip-border">
-            <div className="flex-auto p-6">
-              <div className="flex flex-row -mx-3">
-                <div className="flex items-center w-2/3 max-w-full px-3">
-                  <span className=" mx-1 opacity-50 text-slate-700" >Name:</span>
-                  <h6 className="mb-0 ml-2 text-sm  capitalize font-semibold leading-normal text-mainGreen">
-                    #ContractName
-                  </h6>
-                </div>
-              </div>
-            </div>
+         <div className=" w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
+            {isAuth ? (
+              <FileUpload />
+            ) : (
+              <Link href="/sign-in">
+                <Button className="bg-allblack border border-mainGreen">
+                  Login (test users only)
+                  <LogIn className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            )}
           </div>
-
             {/* contract name  */}
-            <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-2/4">
-              <div className="relative flex flex-col min-w-0 break-words bg-white  rounded-2xl bg-clip-border">
+            <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-3/4">
+              <div className="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                 <div className="flex-auto p-6">
                   <div className="flex flex-row -mx-3">
                     <div className="flex items-center w-2/3 max-w-full px-3">
-                      <span className=" mx-1 opacity-50 text-slate-700" >Name:</span>
-                        <h6 className="mb-0 ml-2 text-sm  capitalize font-semibold leading-normal text-mainGreen">
-                       {currentChat?.name || ""}
-                        </h6>
+                      <span className="mx-3" >Name:</span>
+                        <h5 className="mb-0 ml-4 font-bold text-mainGreen">
+                          nome do contracto 
+                        </h5>
                     </div>
                   </div>
                 </div>
@@ -113,12 +108,16 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
 
       <div className="flex w-full h-[100vh] overflow-scroll">
+
         {/* chat sidebar 
         <div className="flex-[1] max-w-xs">
           <ChatSideBar chats={_chats} chatId={parseInt(chatId)} isPro={isPro} />
         </div>
         */}
         <ContainerChat chatId={chatId} userId={userId} currentChat={currentChat}  />
+
+  
+   
       </div>
     </main>
   );
