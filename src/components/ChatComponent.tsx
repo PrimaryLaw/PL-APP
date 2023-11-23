@@ -28,6 +28,11 @@ const ChatComponent = ({ chatId, userId }: Props) => {
     },
   });
 
+  const submit = (event: any) => {
+    console.log({event, input})
+    console.log('send', handleSubmit(event), messages)
+  }
+
   // Using a custom useChat hook to manage chat input and submission.
   const { input, handleInputChange, handleSubmit, messages } = useChat({
     api: '/api/chat',
@@ -62,7 +67,7 @@ const ChatComponent = ({ chatId, userId }: Props) => {
 
       {/* Form for sending messages */}
       <form
-        onSubmit={handleSubmit}
+        onSubmit={submit}
         className="sticky bottom-0 inset-x-0 px-2 py-4 bg-white"
       >
         <div className="flex">

@@ -52,7 +52,6 @@ export async function POST(req: Request) {
       ],
       stream: true,
     });
-    console.log('chat - response', response)
     const stream = OpenAIStream(response, {
       onStart: async () => {
         // save user message into db
