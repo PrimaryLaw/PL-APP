@@ -3,8 +3,6 @@ import { DrizzleChat } from "@/lib/db/schema";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import { redirect } from "next/navigation";
-import { useRouter } from 'next/router';
 
 type Props = {
   chats: DrizzleChat[];

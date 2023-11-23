@@ -36,7 +36,6 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   }
 
   const _chats = await db.select().from(chats);
-  console.log({ _chats })
   if (!_chats) {
     return redirect("/");
   }
@@ -51,7 +50,6 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
     return redirect("/");
   }
 
-  console.log({ currentChat, chatId })
   const isPro = await checkSubscription();
 
   return (

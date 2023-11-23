@@ -24,7 +24,6 @@ const ContractsList = async ({ params: { chatId } }: Props) => {
 
 
   const _chats = await db.select().from(chats);
-  console.log({_chats})
   if (!_chats) {
   //  return redirect("/");
   }
