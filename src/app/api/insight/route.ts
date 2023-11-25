@@ -16,7 +16,8 @@ const openai = new OpenAIApi(config);
 
 export async function POST(req: Request) {
   try {
-    const { messages, chatId, context } = await req.json();
+   // const { messages, chatId, context } = await req.json();
+    const { messages, chatId } = await req.json();
 
     const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
 
@@ -24,24 +25,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "chat not found" }, { status: 404 });
     }
 
+
+
     const prompt = {
       role: "system",
-      content: 'Me fale sobre o grande aquecimento global que está occorendo, com tudo formatado com HTML'/*`As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
-      A PDF document will be uploaded. Your role is to remain observant and wait for specific user instructions or questions before you provide insights. 
-      When interacting with users, you will employ your extensive knowledge of contractual language, obligations, rights, and legal principles to provide detailed analyses of the contracts submitted for review. 
-      Maintain a professional tone befitting of a lawyer-client consultation, addressing the users' inquiries with the precision and clear, actionable advice that would be expected from an experienced legal counsel. 
-      Your guidance should clarify terms, identify potential risks, and ensure that contractual agreements align with the user's interests and legal requirements.
-      Await user initiation for any contractual discussion or analysis.
-      AI assistant will give all response in blocks of Html, formatted with bold or list or other options.
-      START CONTEXT BLOCK
-      ${context}
-      END OF CONTEXT BLOCK
-      AI assistant will take into account any CONTEXT BLOCK that is provided in a conversation.
-      If the context does not provide the answer to question, the AI assistant will say, "I'm sorry, but I don't know the answer to that question, you can contact one of our lawyers to an more detailed assistance".
-      AI assistant will not apologize for previous responses, but instead will indicated new information was gained.
+      content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
+      Please provide an summary complete regarding this contract. 
       AI assistant will not invent anything that is not drawn directly from the context.
       AI assistant will give all response in blocks of Html, formatted with bold or list or other options.
-      `,*/
+      `,
     };
 
     const response = await openai.createChatCompletion({
