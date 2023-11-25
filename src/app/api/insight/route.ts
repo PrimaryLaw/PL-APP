@@ -32,6 +32,7 @@ export async function POST(req: Request) {
       content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
       Please provide an summary complete regarding this contract. 
       AI assistant will not invent anything that is not drawn directly from the context.
+      AI assistant will give all response in blocks of Html, formatted with bold or list or other options.
       `,
     };
 
@@ -45,12 +46,7 @@ export async function POST(req: Request) {
     });
     
     console.log('insight - response', response)
-    const stream = OpenAIStream(response, {
-      onStart: async () => {
-      },
-      onCompletion: async (completion) => {
-      },
-    });
+    const stream = OpenAIStream(response);
     return new StreamingTextResponse(stream);
   } catch (error) {
     console.error(error);

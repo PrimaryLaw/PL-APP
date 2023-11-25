@@ -28,7 +28,7 @@ const MessageInsight = ({ message, isLoading }: Props) => {
                 "rounded-lg px-3 text-sm py-2  ring-1 ring-gray-900/10",
               )}
             >
-              <p>{message}</p>
+              <p dangerouslySetInnerHTML={{ __html: message }}></p>
             </div>
           </div>
         }
