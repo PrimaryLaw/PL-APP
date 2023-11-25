@@ -26,12 +26,13 @@ export async function POST(req: Request) {
 
     const prompt = {
       role: "system",
-      content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
+      content: 'Me fale sobre o grande aquecimento global que está occorendo, com tudo formatado com HTML'/*`As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
       A PDF document will be uploaded. Your role is to remain observant and wait for specific user instructions or questions before you provide insights. 
       When interacting with users, you will employ your extensive knowledge of contractual language, obligations, rights, and legal principles to provide detailed analyses of the contracts submitted for review. 
       Maintain a professional tone befitting of a lawyer-client consultation, addressing the users' inquiries with the precision and clear, actionable advice that would be expected from an experienced legal counsel. 
       Your guidance should clarify terms, identify potential risks, and ensure that contractual agreements align with the user's interests and legal requirements.
       Await user initiation for any contractual discussion or analysis.
+      AI assistant will give all response in blocks of Html, formatted with bold or list or other options.
       START CONTEXT BLOCK
       ${context}
       END OF CONTEXT BLOCK
@@ -39,7 +40,8 @@ export async function POST(req: Request) {
       If the context does not provide the answer to question, the AI assistant will say, "I'm sorry, but I don't know the answer to that question, you can contact one of our lawyers to an more detailed assistance".
       AI assistant will not apologize for previous responses, but instead will indicated new information was gained.
       AI assistant will not invent anything that is not drawn directly from the context.
-      `,
+      AI assistant will give all response in blocks of Html, formatted with bold or list or other options.
+      `,*/
     };
 
     const response = await openai.createChatCompletion({
@@ -52,12 +54,7 @@ export async function POST(req: Request) {
     });
     
     console.log('insight - response', response)
-    const stream = OpenAIStream(response, {
-      onStart: async () => {
-      },
-      onCompletion: async (completion) => {
-      },
-    });
+    const stream = OpenAIStream(response);
     return new StreamingTextResponse(stream);
   } catch (error) {
     console.error(error);
