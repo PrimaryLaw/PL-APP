@@ -15,8 +15,7 @@ const openai = new OpenAIApi(config);
 
 export async function POST(req: Request) {
   try {
-   // const { messages, chatId, context } = await req.json();
-    const { messages, chatId } = await req.json();
+    const { messages, chatId, insight } = await req.json();
 
     const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
 
@@ -26,10 +25,11 @@ export async function POST(req: Request) {
 
     const prompt = {
       role: "system",
-      content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
-      Please provide an summary complete regarding this contract. 
+      content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts.
+      ${insight}
       AI assistant will not invent anything that is not drawn directly from the context.
-      AI assistant will give all response in blocks of Html, formatted with bold or list or other options.
+      AI assistant will give always with all response in blocks of Html, formatted with bold or list or other options.
+      AI assistant will provide all responses in distinct HTML blocks, some examples after, with <b>bold</b> formatting,  with <ul><li>bullet point</li><li>list</li></ul> formatting or <h2>headings</h2>, but always with HTML blocks.
       `,
     };
 
@@ -43,10 +43,6 @@ export async function POST(req: Request) {
     });
     
     const stream = OpenAIStream(response);
-
-    const streamResponse = new StreamingTextResponse(stream);
-
-    console.log(streamResponse)
 
     return new StreamingTextResponse(stream)
   } catch (error) {
