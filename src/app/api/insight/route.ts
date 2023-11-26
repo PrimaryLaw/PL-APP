@@ -33,7 +33,7 @@ export async function POST(req: Request) {
       `,
     };
 
-    console.log({prompt})
+    console.log({prompt}, )
 
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     
     const stream = OpenAIStream(response);
 
-    console.log({stream, response})
+    console.log({stream, response, openai}, new StreamingTextResponse(stream))
 
     return NextResponse.json(
       {
