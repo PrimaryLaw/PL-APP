@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai-edge";
 import { Message, OpenAIStream, StreamingTextResponse } from "ai";
 import { db } from "@/lib/db";
-import { chats, messages as _messages } from "@/lib/db/schema";
+import { chats } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
@@ -45,16 +45,14 @@ export async function POST(req: Request) {
     const stream = OpenAIStream(response);
 
     const streamResponse = new StreamingTextResponse(stream)
-    console.log({streamResponse, body: streamResponse?.body, reader: stream.getReader()})
+    const reader = stream.getReader();
+    const { done, value } = await reader.read();
 
-    return NextResponse.json(
-      {
-        stream,
-      },
-      { status: 200 });
-
-    //return new StreamingTextResponse(stream);
+    console.log({streamResponse, body: streamResponse?.body,  data: streamResponse.text()})
+    console.log(reader, { done, value })
+    
+    return new StreamingTextResponse(stream)
   } catch (error) {
-    console.error('route -insight', error);
+    console.error('route - insight', error);
   }
 }
