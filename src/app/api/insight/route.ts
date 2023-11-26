@@ -33,6 +33,8 @@ export async function POST(req: Request) {
       `,
     };
 
+    console.log({prompt})
+
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [
