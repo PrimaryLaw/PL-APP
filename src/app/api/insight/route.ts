@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       ${insight}
       AI assistant will not invent anything that is not drawn directly from the context.
       AI assistant will give always with all response in blocks of Html, formatted with bold or list or other options.
-      AI assistant will provide all responses in distinct HTML blocks, some examples after, with <b>bold</b> formatting,  with <ul><li>bullet point</li><li>list</li></ul> formatting or <h2>headings</h2>, but always with HTML blocks.
+      AI assistant will provide all responses in distinct HTML blocks, some examples after, with <p>The contract includes <p/>, with <b>bold</b> formatting,  with <ul><li>1. Definitions</li></ul> formatting or <h2>headings</h2>, but always with HTML blocks.
       `,
     };
 
