@@ -1,6 +1,5 @@
 import { Configuration, OpenAIApi } from "openai-edge";
 import { Message, OpenAIStream, StreamingTextResponse } from "ai";
-import { getContext } from "@/lib/context";
 import { db } from "@/lib/db";
 import { chats, messages as _messages } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -25,8 +24,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "chat not found" }, { status: 404 });
     }
 
-
-
     const prompt = {
       role: "system",
       content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
@@ -45,10 +42,18 @@ export async function POST(req: Request) {
       stream: true,
     });
     
-    console.log('insight - response', response)
     const stream = OpenAIStream(response);
-    return new StreamingTextResponse(stream);
+
+    console.log({stream})
+
+    return NextResponse.json(
+      {
+        stream,
+      },
+      { status: 200 }
+
+    //return new StreamingTextResponse(stream);
   } catch (error) {
-    console.error(error);
+    console.error('route -insight', error);
   }
 }
