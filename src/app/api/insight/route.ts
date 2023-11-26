@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       {
         stream,
       },
-      { status: 200 }
+      { status: 200 });
 
     //return new StreamingTextResponse(stream);
   } catch (error) {
