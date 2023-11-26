@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     
     const stream = OpenAIStream(response);
 
-    console.log({stream})
+    console.log({stream, response})
 
     return NextResponse.json(
       {
