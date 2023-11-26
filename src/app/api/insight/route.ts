@@ -44,15 +44,13 @@ export async function POST(req: Request) {
     
     const stream = OpenAIStream(response);
 
-    const streamResponse = new StreamingTextResponse(stream)
-    const reader = stream.getReader();
-    const { done, value } = await reader.read();
+    const streamResponse = new StreamingTextResponse(stream);
 
-    console.log({streamResponse, body: streamResponse?.body,  data: streamResponse.text()})
-    console.log(reader, { done, value })
-    
+    console.log(streamResponse)
+
     return new StreamingTextResponse(stream)
   } catch (error) {
     console.error('route - insight', error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
