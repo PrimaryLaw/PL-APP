@@ -1,16 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { useChat } from "ai/react";
 import MessageInsight from "./MessageInsight";
 import { XSquare } from "lucide-react";
-import { Input } from "./ui/input";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Message } from "ai";
 
-type Props = { chatId: number, title: string, context: string };
+type Props = { chatId: number, title: string, insight: string };
 
-const InsightChat = ({ chatId, context, title }: Props) => {
+const InsightChat = ({ chatId, insight, title }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -21,7 +17,7 @@ const InsightChat = ({ chatId, context, title }: Props) => {
       setIsLoading(true)
       const response = await axios.post('/api/insight', {
         chatId,
-        context,
+        insight,
         messages: []
       });   
       
@@ -33,18 +29,6 @@ const InsightChat = ({ chatId, context, title }: Props) => {
     }
   }
 
-  // Using the React useEffect hook to scroll to the latest message.
-  React.useEffect(() => {
-    const messageContainer = document.getElementById('message-container');
-    if (messageContainer) {
-      messageContainer.scrollTo({
-        top: messageContainer.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-  }, [message]);
-
-  // Rendering the chat component UI.
   return (
     <div className="flex flex-col w-full">
       <div className="flex">
@@ -74,5 +58,4 @@ const InsightChat = ({ chatId, context, title }: Props) => {
   );
 };
 
-// Exporting the ChatComponent for use in other parts of the application.
 export default InsightChat;

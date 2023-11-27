@@ -47,7 +47,7 @@ const InsightsComponent = ({ chatId, userId }: Props) => {
         <div className="flex-auto p-4 pt-6">
           <ul className="flex flex-col pl-0 mb-0 rounded-lg">
             <li className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
-                <InsightChat chatId={chatId} title={'Summarize'} context="insight here" />
+                <InsightChat chatId={chatId} title={'Summarize'} insight="Please provide an summary complete regarding this contract." />
             </li>
             <li className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
               <div className="flex flex-col">

@@ -1,8 +1,7 @@
 import { Configuration, OpenAIApi } from "openai-edge";
 import { Message, OpenAIStream, StreamingTextResponse } from "ai";
-import { getContext } from "@/lib/context";
 import { db } from "@/lib/db";
-import { chats, messages as _messages } from "@/lib/db/schema";
+import { chats } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
@@ -16,8 +15,7 @@ const openai = new OpenAIApi(config);
 
 export async function POST(req: Request) {
   try {
-   // const { messages, chatId, context } = await req.json();
-    const { messages, chatId } = await req.json();
+    const { messages, chatId, insight } = await req.json();
 
     const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
 
@@ -25,14 +23,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "chat not found" }, { status: 404 });
     }
 
-
-
     const prompt = {
       role: "system",
-      content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
-      Please provide an summary complete regarding this contract. 
+      content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts.
+      ${insight}
       AI assistant will not invent anything that is not drawn directly from the context.
-      AI assistant will give all response in blocks of Html, formatted with bold or list or other options.
+      AI assistant will give always with all response in blocks of Html, formatted with bold or list or other options.
+      AI assistant will provide all responses in distinct HTML blocks, some examples of formatting are <p>The contract includes <p/>, <b>bold</b>,<ul><li>1. Definitions</li></ul> or <h2>headings</h2>, but always with HTML blocks.
       `,
     };
 
@@ -45,10 +42,11 @@ export async function POST(req: Request) {
       stream: true,
     });
     
-    console.log('insight - response', response)
     const stream = OpenAIStream(response);
-    return new StreamingTextResponse(stream);
+
+    return new StreamingTextResponse(stream)
   } catch (error) {
-    console.error(error);
+    console.error('route - insight', error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
