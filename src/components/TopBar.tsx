@@ -1,17 +1,30 @@
 "use client";
 import { DrizzleChat } from "@/lib/db/schema";
 import Link from "next/link";
-import React from "react";
 import { Button } from "./ui/button";
+import { Inter } from 'next/font/google'
+import { UserButton, auth } from "@clerk/nextjs";
+import { ArrowRight, LogIn } from "lucide-react";
+import FileUpload from "@/components/FileUpload";
+import { checkSubscription } from "@/lib/subscription";
+import MainNav from "@/components/MainNav";
+import MainFooter from "@/components/MainFooter";
+import SubscriptionButton from "@/components/SubscriptionButton";
+import { db } from "@/lib/db";
+import { chats } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
+import { ThemeProvider } from "next-themes"
+import { redirect } from "next/navigation";
 
 
 
 
-import logo from "../assets/pl_logo.png";
+
+
+
 
 const TopBar = () => {
-
-
+ 
   return (
     <nav className="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all bg-mainGrey shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main="" navbar-scroll="true">
       <a className="block py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="javascript:;" target="_blank">
@@ -50,7 +63,7 @@ const TopBar = () => {
                 </div>
                 <div className="flex items-center md:ml-auto ">
                   <div className="transition-all duration-200 ease-nav-brand">
-                    <a href="/contractslist/22"  className="inline-block w-full px-8 py-2 mb-0 text-xs font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro hover:shadow-soft-2xl hover:scale-102">My contracts</a>
+                    <a href="/contractslist/32"  className="inline-block w-full px-8 py-2 mb-0 text-xs font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro hover:shadow-soft-2xl hover:scale-102">My contracts</a>
                   </div>
                 </div>
 
