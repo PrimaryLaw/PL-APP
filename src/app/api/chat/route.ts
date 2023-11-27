@@ -52,7 +52,6 @@ export async function POST(req: Request) {
       ],
       stream: true,
     });
-    console.log('chat - response', response)
     const stream = OpenAIStream(response, {
       onStart: async () => {
         // save user message into db
@@ -76,5 +75,6 @@ export async function POST(req: Request) {
     return new StreamingTextResponse(stream);
   } catch (error) {
     console.error(error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
