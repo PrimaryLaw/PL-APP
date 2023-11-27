@@ -43,7 +43,7 @@ export async function POST(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Create chat - Internal server error" },
+      { error: "Error - please try again" },
       { status: 500 }
     );
   }

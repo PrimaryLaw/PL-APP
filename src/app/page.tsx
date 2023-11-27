@@ -14,6 +14,7 @@ import { chats } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { ThemeProvider } from "next-themes"
 import { redirect } from "next/navigation";
+//import backgroundimg from "../assets/anotherbg.png"
 
 
 export default async function Home() {
@@ -31,6 +32,8 @@ export default async function Home() {
   if (isAuth) {
     //return redirect("/chat/0");
   }
+
+  
   
   return (
     <div className="w-screen min-h-screen bg-black">
@@ -40,7 +43,7 @@ export default async function Home() {
           {/* Content for the left side */}
           <div className="flex items-center">
             <h1 className="mr-3 text-8xl bg-gradient-to-r from-slate-100 to-blue-300 bg-clip-text text-transparent ">
-              We're launching soon!
+              TEST
             </h1>
             <p>PRIMARYLAW.AI</p>
           </div>
@@ -101,17 +104,20 @@ export default async function Home() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 content-login ">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-center ">
-            <h1 className="mr-3  bg-gradient-to-tl lg:text-8xl md:text-base sm:text-base from-mainGreen to-darkGreen bg-clip-text text-transparent font-bold">PRIMARYLAW.AI</h1>
+          <h1 className="mr-3 text-mainGreen lg:text-8xl  flex   font-medium">
+        When <span className="font-bold mx-1">LEGAL</span> meets <span className="font-bold mx-1">TECH.</span>
+</h1>
+
             <UserButton afterSignOutUrl="/" />
           </div>
 
-          <div className="flex mt-2">
+          <div className="flex m-8">
             {isAuth && firstChat && (
               <>
               {/* <Link href={`/chat/${firstChat.id}`}>*/}  
               <Link href={`/chat/${firstChat.id}`}>
-                  <Button className="text-grey">
-                    See chats <ArrowRight className="ml-2" />
+                  <Button className="text-defaultWhite bg-transparent border border-mainGreen rounded">
+                    Start <ArrowRight className="ml-2 text-defaultWhite" />
                   </Button>
                 </Link>
                 <div className="ml-3">
@@ -121,21 +127,19 @@ export default async function Home() {
             )}
           </div>
 
-          <p className="max-w-xl mt-1 text-lg text-normalGrey font-thin">
+          <p className="max-w-xl mt-1 text-lg text-defaultWhite font-medium">
             We're lauching soon! 
           </p>
 
           <div className="w-full mt-4">
-          {isAuth ? (
-           <FileUpload /> 
-            ) : (
+            {!isAuth && (
               <Link href="/sign-in">
                 <Button className="bg-allblack border border-mainGreen">
                   Login (test users only!)
                   <LogIn className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-            )}    
+            )}
           </div>
         </div>
       </div>

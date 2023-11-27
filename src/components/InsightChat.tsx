@@ -40,7 +40,7 @@ const InsightChat = ({ chatId, insight, title }: Props) => {
         <div className="ml-auto text-right">
           <form
           >
-            <button type="button" onClick={() => submit()}  className="bg-transparent hover:bg-purple-500 text-purple-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            <button type="button" onClick={() => submit()}  className="bg-transparent hover:bg-mainGreen text-mainGreen font-semibold hover:text-defaultWhite py-2 px-4 border border-mainGreen hover:border-transparent rounded">
               Generate
             </button>
           </form>
