@@ -29,7 +29,7 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
     }
   };
 
-  const currPage = ' Contracts List'; // Define the current page name
+  const currPage = 'Contract Analyzer / My contracts'; // Define the current page name
 
   return (
     <div className="w-full h-[100vh] overflow-y-auto soff p-4 text-gray-200 bg-transparent scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar-track:!bg-slate-100 scrollbar-thumb:!rounded scrollbar-thumb:!bg-slate-300">
@@ -42,7 +42,7 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
           New Chat
         </Button>
       </Link>
-      <TopBar currentPage={currPage} />
+      <TopBar currentPage={currPage} buttonBack={true} chatId={chatId}/>
       <div className="flex">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-darkGreen">
           <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clipRule="evenodd" />

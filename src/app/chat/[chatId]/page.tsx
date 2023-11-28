@@ -4,7 +4,7 @@ import ChatSideBar from "@/components/ChatSideBar";
 import { Button } from "@/components/ui/button";
 import TopBar from "@/components/TopBar";
 import Link from "next/link";
-import { ArrowRight, LogIn, Scale } from "lucide-react";
+import { ArrowRight, LogIn, Scale, Pencil } from "lucide-react";
 import FileUpload from "@/components/FileUpload";
 import PDFViewer from "@/components/PDFViewer";
 import { db } from "@/lib/db";
@@ -52,9 +52,11 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
   const isPro = await checkSubscription();
 
+  const currPage = ' Contract Analyzer'; // Define the current page name
+
   return (
     <main className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
-      <TopBar userId={userId} chatId={parseInt(chatId)} />
+      <TopBar userId={userId} chatId={parseInt(chatId)} currentPage={currPage} />
       <div className="ease-soft-in-out bg-mainGrey relative w-full mb-3 flex sm:flex-none  rounded-xl transition-all duration-200">
         {/* file upload */}
         <div className=" w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
@@ -72,6 +74,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
                   <h6 className="mb-0 ml-2 text-sm  capitalize font-semibold leading-normal text-mainGreen">
                   {currentChat?.name || ""}
                   </h6>
+                  <Pencil className="w-5 h-5 text-slate-700 mx-4" />
                 </div>
               </div>
             </div>

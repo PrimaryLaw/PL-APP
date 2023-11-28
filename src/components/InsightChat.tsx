@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import MessageInsight from "./MessageInsight";
-import { XSquare, FileText, FileWarning, Scale ,BookMarked } from "lucide-react";
+import { XSquare } from "lucide-react";
 import axios from "axios";
 
 type Props = { chatId: number, title: string, insight: string, insightIcon: string };

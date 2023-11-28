@@ -10,7 +10,8 @@ import MainFooter from "@/components/MainFooter";
 import SubscriptionButton from "@/components/SubscriptionButton";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
-import plLogo from '/Users/taisgoncalves/Documents/PL-APP/src/assets/logo2.png';
+import plLogo from '/src/assets/fulllogo_mainGreen.png';
+import linesBg from '/src/assets/lines_bg.png';
 import Image from 'next/image'; // Import the Image component
 
 
@@ -34,8 +35,8 @@ export default async function Home() {
     <div className="w-screen min-h-screen bg-black">
       <nav className="bg-allblack dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-allblack dark:border-gray-600 ">
         <div className=" flex flex-wrap items-center justify-between mx-11 p-4">
-          <a href="/" className="flex items-center text-mainGreen">
-           PRIMARYLAW.AI
+          <a href="www.primarylaw.ai" className="flex items-center text-mainGreen">
+               <Image src={plLogo} alt="PL Logo" width={160} height={100} /> 
           </a>
           <div className="flex md:order-2">
            
@@ -62,29 +63,34 @@ export default async function Home() {
       </nav>
       <div className="content-login">
         <div className="flex w-full h-[100vh] flex overflow-scroll">
-                <div className="h-[100vh] px-2 py-5 rounded-lg border border-allblack oveflow-scroll  flex-[4]">
-                    <div className="mt-5 flex p-8">
-                        <h1 className="mr-3 text-mainGreen lg:text-8xl font-medium">
-                        When <span className="font-bold mx-1">LEGAL</span> meets <span className="font-bold mx-1">TECH.</span>
-                        </h1>
-                    </div>
-                    <div className="flex m-8">
-              {isAuth && firstChat && (
-                <>
-                  <Link href={`/chat/${firstChat.id}`}>
-                    <Button className="text-defaultWhite bg-transparent border border-mainGreen rounded">
-                      Start <ArrowRight className="ml-2 text-defaultWhite" />
-                    </Button>
-                  </Link>
-                  <div className="ml-3">
-                    <SubscriptionButton isPro={isPro} />
+                <div className="h-[100vh] px-2 py-5 rounded-lg border border-allblack oveflow-scroll flex flex-col  items-center flex-[4]">
+                  <div className="content-ever">
+                      <div className="mt-40 flex p-8">
+                            <h1 className="mr-3 text-mainGreenTransparent lg:text-8xl font-medium hidden">
+                            When <span className="font-bold mx-1">LEGAL</span> meets <span className="font-bold mx-1">TECH.</span>
+                            </h1>
+                        </div>
+                        <p className="text-defaultWhite font-light ml-3 mt-3 px-8 lg:text-5xl">We're lauching soon.</p>
+                        <div className="flex ml-3 mt-6 px-8">
+                  {isAuth && firstChat && (
+                    <>
+                      <Link href={`/chat/${firstChat.id}`}>
+                        <Button className="text-defaultWhite bg-transparent hover:bg-mainGreen border border-mainGreen rounded">
+                          Start <ArrowRight className="ml-2 text-defaultWhite " />
+                        </Button>
+                      </Link>
+                      <div className="ml-3">
+                        <SubscriptionButton isPro={isPro} />
+                      </div>
+                    </>
+                  )}
+                      </div>
+
                   </div>
-                </>
-              )}
-            </div>
+                   
                 </div>
                 <div className="h-[100vh] px-2 py-5 rounded-lg border border-allblack oveflow-scroll bg-darkgreen flex-[4]">
-                  {/*   <Image src={plLogo} alt="PL Logo" width={500} height={150} /> */}
+                   <Image src={linesBg} alt="PL Logo" width={750} height={500} /> 
                 </div>
         </div> 
        

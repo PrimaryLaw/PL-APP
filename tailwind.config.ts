@@ -31,6 +31,7 @@ module.exports = {
         mainGrey: '#f8f9fa',
         defaultWhite: '#ffffff',
         mainGreen: '#04b88f',
+        mainGreenTransparent: '#04b88f30',
         darkGreen: '#0b4d3e',
         transparentGreen: '#07b38c33',
         allblack: '#000000',

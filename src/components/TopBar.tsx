@@ -15,7 +15,8 @@ import { chats } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { ThemeProvider } from "next-themes"
 import { redirect } from "next/navigation";
-
+import Image from 'next/image'; // Import the Image component
+import plLogo from 'src/assets/plogo_mainGreen.png';
 
 
 
@@ -23,25 +24,31 @@ import { redirect } from "next/navigation";
 
 interface TopBarProps {
   currentPage: string;
+  buttonBack: boolean;
+  chatId: string;
 }
 
-const TopBar = ({ currentPage }: TopBarProps) => {
+const TopBar = ({ currentPage, buttonBack, chatId }: TopBarProps) => {
+
+   // Determine the button text and href based on buttonBack value
+   const buttonText = buttonBack ? "< back to chats" : "My contracts";
+   const buttonHref = buttonBack ? `/chat/${chatId}` : `/contractslist/${chatId}`;
  
   return (
     <nav className="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all bg-mainGrey shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main="" navbar-scroll="true">
       <a className="block py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="javascript:;" target="_blank">
-    {/* < src={ logo } className="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo"> */}  
+   
     
 
     </a>
     <div className="flex items-center justify-between w-full  py-1 mx-auto flex-wrap-inherit">
-      <nav>
-     
+      <nav className="flex items-center">
+        <Image className="mr-4" src={plLogo} alt="PL Logo" width={40} height={30} /> 
         <ol className="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
           <li className="text-sm leading-normal">
             <a className="opacity-50 text-slate-700" href="javascript:;">Products</a>
           </li>
-          <li className="text-sm pl-2 my-route capitalize font-semibold leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Contract Analyzer / {currentPage}</li>
+          <li className="text-sm pl-2 my-route capitalize font-semibold leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">{currentPage}</li>
         </ol>
   
       </nav>
@@ -65,7 +72,9 @@ const TopBar = ({ currentPage }: TopBarProps) => {
                 </div>
                 <div className="flex items-center md:ml-auto ">
                   <div className="transition-all duration-200 ease-nav-brand">
-                    <a href="/contractslist/32"  className="inline-block w-full px-8 py-2 mb-0 text-xs font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro hover:shadow-soft-2xl hover:scale-102">My contracts</a>
+                    <a href={buttonHref}  
+                    className="inline-block w-full px-8 py-2 mb-0 text-xs font-bold text-center text-black uppercase transition-all ease-in bg-white border-0 border-white rounded-lg shadow-soft-md bg-150 leading-pro hover:shadow-soft-2xl hover:scale-102">
+                    {buttonText}</a>
                   </div>
                 </div>
 
