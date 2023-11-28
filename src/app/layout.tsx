@@ -25,9 +25,8 @@ export default function RootLayout({
       },
     }}>
       <Providers>
-        <html lang="en">
-        <Head>
-          {/* Your Google Tag */}
+      <Head>
+          {/* Google Analytics Tag */}
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LN5S5YRCG"></script>
           <script dangerouslySetInnerHTML={{
             __html: `
@@ -40,7 +39,7 @@ export default function RootLayout({
         </Head>
           <body className={inter.className}>{children}</body>
           <Toaster />
-        </html>
+   
       </Providers>
     </ClerkProvider>
   );

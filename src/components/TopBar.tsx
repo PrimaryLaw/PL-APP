@@ -21,9 +21,11 @@ import { redirect } from "next/navigation";
 
 
 
+interface TopBarProps {
+  currentPage: string;
+}
 
-
-const TopBar = () => {
+const TopBar = ({ currentPage }: TopBarProps) => {
  
   return (
     <nav className="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all bg-mainGrey shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main="" navbar-scroll="true">
@@ -39,7 +41,7 @@ const TopBar = () => {
           <li className="text-sm leading-normal">
             <a className="opacity-50 text-slate-700" href="javascript:;">Products</a>
           </li>
-          <li className="text-sm pl-2 capitalize font-semibold leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Contract Analyzer</li>
+          <li className="text-sm pl-2 my-route capitalize font-semibold leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Contract Analyzer / {currentPage}</li>
         </ol>
   
       </nav>
