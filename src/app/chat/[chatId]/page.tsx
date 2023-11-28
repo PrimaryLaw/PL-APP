@@ -78,7 +78,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
           </div>
         </div>
 
-        <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
+        <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4 hidden">
           <div className="relative flex flex-col min-w-0 break-words bg-white  rounded-2xl bg-clip-border">
             <div className="flex-auto px-6 py-3">
               <div className="flex flex-row -mx-3">
