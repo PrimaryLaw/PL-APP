@@ -4,6 +4,7 @@ import React from "react";
 import { chats } from "@/lib/db/schema";
 import ChatSideBar from "@/components/ChatSideBar";
 import { db } from "@/lib/db";
+import TopBar from "@/components/TopBar";
 
 
 
@@ -28,11 +29,13 @@ const ContractsList = async ({ params: { chatId } }: Props) => {
   //  return redirect("/");
   }
 
-
+  const currPage = ' Contracts List'; // Define the current page name
 
   return (
+    
     <div className="flex-[1] max-w-xs">
-    <ChatSideBar chats={_chats} chatId={parseInt(chatId)}  />
+    
+     <ChatSideBar chats={_chats} chatId={parseInt(chatId)}  />
   </div>
   );
 };

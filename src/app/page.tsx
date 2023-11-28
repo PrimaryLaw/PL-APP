@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import { Button } from "@/components/ui/button";
 import { UserButton, auth } from "@clerk/nextjs";
 import Link from "next/link";
@@ -11,6 +12,7 @@ import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
 import plLogo from '/Users/taisgoncalves/Documents/PL-APP/src/assets/logo2.png';
 import Image from 'next/image'; // Import the Image component
+
 
 export default async function Home() {
   const { userId } = await auth();
