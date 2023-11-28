@@ -3,7 +3,7 @@ import React from "react";
 import { Input } from "./ui/input";
 import { useChat } from "ai/react";
 import { Button } from "./ui/button";
-import { XSquare } from "lucide-react";
+import { XSquare, FileText, FileWarning, Scale ,BookMarked } from "lucide-react";
 import MessageList from "./MessageList";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -15,10 +15,10 @@ type Props = { chatId: number, userId: string };
 const InsightsComponent = ({ chatId, userId }: Props) => {
     // Define your insights as objects
   const insights = [
-    { title: 'Summarize', contentInsight: 'Please provide a summary complete regarding this contract.' },
-    { title: 'Risks', contentInsight: 'Please provide the risks of this contract.' },
-    { title: 'Obligations & Rights', contentInsight: 'Please provide the obligations and rights of this contract.' },
-    { title: 'Liability & Indemnities', contentInsight: 'Please provide the liability and indemnities of this contract.' },
+    { title: 'Summarize', contentInsight: 'Please provide a summary complete regarding this contract.', insightIcon: <FileText /> },
+    { title: 'Risks', contentInsight: 'Please provide the risks of this contract.', insightIcon: <FileWarning /> },
+    { title: 'Obligations & Rights', contentInsight: 'Please provide the obligations and rights of this contract.', insightIcon: <Scale/> },
+    { title: 'Liability & Indemnities', contentInsight: 'Please provide the liability and indemnities of this contract.', insightIcon: <BookMarked /> },
   ];
 
 
@@ -79,7 +79,7 @@ const InsightsComponent = ({ chatId, userId }: Props) => {
             */}
             {insights.map((insight) => (
               <li key={insight.title} className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
-                <InsightChat chatId={chatId} title={insight.title} insight={insight.contentInsight} />
+                <InsightChat chatId={chatId} title={insight.title} insight={insight.contentInsight} insightIcon={insight.insightIcon} />
               </li>
             ))}
           </ul>
