@@ -34,7 +34,7 @@ export default async function Home() {
   return (
     <div className="w-screen min-h-screen bg-black">
       <nav className="bg-allblack dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-allblack dark:border-gray-600 ">
-        <div className=" flex flex-wrap items-center justify-between mx-11 xs:mx-4 p-4">
+        <div className=" flex lg:flex-wrap items-center justify-between mx-11 xs:mx-4 p-4">
           <a href="www.primarylaw.ai" className="flex items-center text-mainGreen">
                <Image src={plLogo} alt="PL Logo" width={160} height={100} /> 
           </a>
@@ -45,7 +45,7 @@ export default async function Home() {
               {!isAuth && (
                 <Link href="/sign-in">
                   <Button className="bg-allblack border border-mainGreen hover:bg-mainGreen">
-                    Login (demo testers only)
+                    Login
                     <LogIn className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
@@ -61,17 +61,17 @@ export default async function Home() {
           <MainNav />
         </div>
       </nav>
-      <div className="content-login">
-        <div className="flex w-full h-[100vh] flex overflow-scroll flex flex-col sm:flex-row">
+      <div className="content-login ">
+        <div className="flex w-full h-[100vh] md:mt-16 flex overflow-scroll flex flex-col sm:flex-row">
                 <div className="h-[100vh] px-2 py-5 rounded-lg border border-allblack oveflow-scroll flex flex-col  items-center flex-[4]">
                   <div className="content-ever">
-                      <div className="mt-40 flex p-8">
+                      <div className="mt-40 xs:mt-10 flex p-8">
                             <h1 className="mr-3 text-mainGreenTransparent lg:text-8xl font-medium hidden">
                             When <span className="font-bold mx-1">LEGAL</span> meets <span className="font-bold mx-1">TECH.</span>
                             </h1>
                         </div>
                         <p className="text-defaultWhite font-light ml-3 mt-3 px-8 xs:text-5xl lg:text-8xl ">We're launching soon.</p>
-                        <div className="flex ml-3 mt-6 px-8">
+                        <div className="flex ml-3 xs:mt-1 mt-6 px-8">
                   {isAuth && firstChat && (
                     <>
                       <Link href={`/chat/${firstChat.id}`}>
