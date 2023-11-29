@@ -12,12 +12,15 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        "sm": "576px",
+        "sm": "360px",
         "2xl": "1400px",
         'tall': { 'raw': '(min-width: 390px)' },
       },
     },
     extend: {
+      screens: {
+        'xs': '360px', // or whatever value you deem appropriate
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
