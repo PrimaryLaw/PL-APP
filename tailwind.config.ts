@@ -12,7 +12,9 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
+        "sm": "576px",
         "2xl": "1400px",
+        'tall': { 'raw': '(min-width: 390px)' },
       },
     },
     extend: {
@@ -64,6 +66,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontSize: {
+        '8xl': '6rem', // or whatever size you prefer
       },
       borderRadius: {
         lg: "var(--radius)",

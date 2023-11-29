@@ -62,7 +62,7 @@ export default async function Home() {
         </div>
       </nav>
       <div className="content-login">
-        <div className="flex w-full h-[100vh] flex overflow-scroll">
+        <div className="flex w-full h-[100vh] flex overflow-scroll flex flex-col sm:flex-row">
                 <div className="h-[100vh] px-2 py-5 rounded-lg border border-allblack oveflow-scroll flex flex-col  items-center flex-[4]">
                   <div className="content-ever">
                       <div className="mt-40 flex p-8">
@@ -70,7 +70,7 @@ export default async function Home() {
                             When <span className="font-bold mx-1">LEGAL</span> meets <span className="font-bold mx-1">TECH.</span>
                             </h1>
                         </div>
-                        <p className="text-defaultWhite font-light ml-3 mt-3 px-8 lg:text-5xl">We're lauching soon.</p>
+                        <p className="text-defaultWhite font-light ml-3 mt-3 px-8 lg:text-8xl ">We're launching soon.</p>
                         <div className="flex ml-3 mt-6 px-8">
                   {isAuth && firstChat && (
                     <>
