@@ -18,6 +18,18 @@ export async function POST(req: Request) {
     const { messages, chatId, userId } = await req.json();
 
     const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
+    // Only select the pdfUrl column since that's all we need
+    const currPdf = _chats[0].pdfUrl;
+    if (_chats.length != 1) {
+      return NextResponse.json({ error: "chat not found" }, { status: 404 });
+    }
+    const fileKey = _chats[0].fileKey;
+    const lastMessage = messages[messages.length - 1];
+    const context = await getContext(lastMessage.content, fileKey);
+    {/* 
+    const { messages, chatId, userId } = await req.json();
+
+    const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
 
     if (_chats.length != 1) {
       return NextResponse.json({ error: "chat not found" }, { status: 404 });
@@ -25,17 +37,22 @@ export async function POST(req: Request) {
     const fileKey = _chats[0].fileKey;
     const lastMessage = messages[messages.length - 1];
     const context = await getContext(lastMessage.content, fileKey);
+  
+  
+  
+  */}
+    
 
     const prompt = {
       role: "system",
-      content: `As a legal expert, your primary function is to meticulously review and analyze legal contracts. 
+      content: `As a legal expert, your primary function is to meticulously review and analyze legal this ${currPdf}. 
       A PDF document will be uploaded. Your role is to remain observant and wait for specific user instructions or questions before you provide insights. 
       When interacting with users, you will employ your extensive knowledge of contractual language, obligations, rights, and legal principles to provide detailed analyses of the contracts submitted for review. 
       Maintain a professional tone befitting of a lawyer-client consultation, addressing the users' inquiries with the precision and clear, actionable advice that would be expected from an experienced legal counsel. 
       Your guidance should clarify terms, identify potential risks, and ensure that contractual agreements align with the user's interests and legal requirements.
       Await user initiation for any contractual discussion or analysis.
       START CONTEXT BLOCK
-      ${context}
+      ${context} and ${currPdf}
       END OF CONTEXT BLOCK
       AI assistant will take into account any CONTEXT BLOCK that is provided in a conversation.
       If the context does not provide the answer to question, the AI assistant will say, "I'm sorry, but I don't know the answer to that question, you can contact one of our lawyers to an more detailed assistance".
@@ -44,9 +61,15 @@ export async function POST(req: Request) {
       `,
     };
 
+
+     // Use the more performant model if it meets your needs
+     const modelName = "gpt-4"; // Chat gpt-4 to read the contract
+     console.log('ta aqui')
+     console.log(prompt)
     const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: modelName,
       messages: [
+        
         prompt,
         ...messages.filter((message: Message) => message.role === "user"),
       ],

@@ -40,7 +40,7 @@ export async function POST(req: Request) {
     };
 
     // Use the more performant model if it meets your needs
-    const modelName = "gpt-4"; // Change to "gpt-4" if necessary
+    const modelName = "gpt-4"; // Chat gpt-4 to read the contract
 
     // Create a chat completion request
     const response = await openai.createChatCompletion({
