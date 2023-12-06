@@ -57,7 +57,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   return (
     <main className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
       <TopBar userId={userId} chatId={parseInt(chatId)} currentPage={currPage} />
-      <div className="ease-soft-in-out bg-mainGrey relative w-full mb-3 flex sm:flex-none  rounded-xl transition-all duration-200">
+      <div className="ease-soft-in-out bg-mainGrey relative w-full mb-3 flex sm:flex-none  rounded-xl transition-all duration-200 xs:flex-col sm:flex-col">
         {/* file upload */}
         <div className=" w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
 
@@ -68,8 +68,8 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         <div className="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-2/4">
           <div className="relative flex flex-col min-w-0 break-words bg-white  rounded-2xl bg-clip-border">
             <div className="flex-auto p-6">
-              <div className="flex flex-row -mx-3">
-                <div className="flex items-center w-2/3 max-w-full px-3">
+              <div className="flex flex-row mx-3">
+                <div className="flex items-center w-2/3 xs:w-3/3 max-w-full px-3">
                   <span className=" mx-1 opacity-50 text-slate-700" >Name:</span>
                   <h6 className="mb-0 ml-2 text-sm  capitalize font-semibold leading-normal text-mainGreen">
                   {currentChat?.name || ""}

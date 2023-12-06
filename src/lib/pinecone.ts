@@ -14,6 +14,8 @@ export const getPineconeClient = () => {
     environment: process.env.PINECONE_ENVIRONMENT!,
     apiKey: process.env.PINECONE_API_KEY!,
   });
+
+  console.log("veio ate aqui");
 };
 
 type PDFPage = {
@@ -22,7 +24,7 @@ type PDFPage = {
     loc: { pageNumber: number };
   };
 };
-
+{/* 
 export async function loadS3IntoPinecone(fileKey: string) {
   // 1. obtain the pdf -> downlaod and read from pdf
   console.log("downloading s3 into file system");
@@ -93,3 +95,5 @@ async function prepareDocument(page: PDFPage) {
   ]);
   return docs;
 }
+
+*/}
