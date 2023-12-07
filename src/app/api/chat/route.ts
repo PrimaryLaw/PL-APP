@@ -5,6 +5,8 @@ import { db } from "@/lib/db";
 import { chats, messages as _messages } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
+import axios from "axios";
+
 
 export const runtime = "edge";
 
@@ -17,11 +19,14 @@ const openai = new OpenAIApi(config);
 //const pdfParse = require('pdf-parse');
 const fetch = require('node-fetch'); // For fetching PDF from URL
 
+const baseUrl = 'http://localhost:3000'
+
+
 async function extractPdfText(pdfUrl: any) {
   console.log('entrou na funcao extractPdfText')
   try {
     console.log('foi chamar a api')
-    const response = await fetch('/api/extractpdf', {
+    const response = await fetch('api/extractpdf', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,6 +40,9 @@ async function extractPdfText(pdfUrl: any) {
     throw error;
   }
 }
+
+
+
 
 
 
