@@ -57,7 +57,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   return (
     <main className="ease-soft-in-out bg-mainGrey relative h-full max-h-screen rounded-xl transition-all duration-200">
       <TopBar userId={userId} chatId={parseInt(chatId)} currentPage={currPage} />
-      <div className="ease-soft-in-out bg-mainGrey relative w-full mb-3 flex sm:flex-none  rounded-xl transition-all duration-200 xs:flex-col sm:flex-col">
+      <div className="ease-soft-in-out bg-mainGrey relative w-full mb-3 rounded-xl transition-all duration-200 sm:flex-none lg:flex xs:flex-col lg:flex-row">
         {/* file upload */}
         <div className=" w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
 
