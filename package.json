@@ -42,6 +42,7 @@
     "encoding": "^0.1.13",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "http": "^0.0.1-security",
     "langchain": "^0.0.150",
     "lucide-react": "^0.274.0",
     "md5": "^2.3.0",
@@ -67,5 +68,10 @@
     "@netlify/plugin-nextjs": "^4.41.1",
     "@types/pdf-parse": "^1.1.4",
     "netlify-cli": "^16.9.2"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }

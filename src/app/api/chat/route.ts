@@ -5,7 +5,9 @@ import { db } from "@/lib/db";
 import { chats, messages as _messages } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
-import axios from "axios";
+import { extractPdfText } from '@/lib/pdftotext'; // Adjust the import path as needed
+
+
 
 
 export const runtime = "edge";
@@ -14,37 +16,6 @@ const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(config);
-
-
-//const pdfParse = require('pdf-parse');
-const fetch = require('node-fetch'); // For fetching PDF from URL
-
-const baseUrl = 'http://localhost:3000'
-
-
-async function extractPdfText(pdfUrl: any) {
-  console.log('entrou na funcao extractPdfText')
-  try {
-    console.log('foi chamar a api')
-    const response = await fetch('api/extractpdf', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ pdfUrl }),
-    });
-    const data = await response.json();
-    return data.text;
-  } catch (error) {
-    console.error('Error calling extract-pdf API:', error);
-    throw error;
-  }
-}
-
-
-
-
-
 
 
 export async function POST(req: Request) {
@@ -60,26 +31,14 @@ export async function POST(req: Request) {
     const fileKey = _chats[0].fileKey;
     const lastMessage = messages[messages.length - 1];
 
-
-    // Extract text from the PDF
+    //call function extractPdfText em /lib/pdftotext.ts
     const pdfText = await extractPdfText(currPdf);
-    const context = await getContext(lastMessage.content, fileKey);
-    {/* 
-    const { messages, chatId, userId } = await req.json();
 
-    const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
-
-    if (_chats.length != 1) {
-      return NextResponse.json({ error: "chat not found" }, { status: 404 });
-    }
-    const fileKey = _chats[0].fileKey;
-    const lastMessage = messages[messages.length - 1];
-    const context = await getContext(lastMessage.content, fileKey);
-  
-  
-  
-  */}
     
+
+
+    const context = await getContext(lastMessage.content, fileKey);
+
 
     const prompt = {
       role: "system",
