@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "export NODE_OPTIONS='--max-old-space-size=8192' && next dev",
+    "dev-windows": "set NODE_OPTIONS='--max-old-space-size=8192' && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -50,13 +51,14 @@
     "next-themes": "^0.2.1",
     "openai-edge": "^1.2.2",
     "pdf-parse": "^1.1.1",
-    "pdfjs-dist": "^3.10.111",
+    "pdfjs-dist": "^3.11.174",
     "pg": "^8.11.3",
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
+    "sharp": "^0.33.0",
     "stream": "^0.0.2",
     "stripe": "^13.4.0",
     "tailwind-merge": "^1.14.0",
@@ -67,6 +69,7 @@
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.41.1",
     "@types/pdf-parse": "^1.1.4",
+    "@types/pdfjs-dist": "^2.10.378",
     "netlify-cli": "^16.9.2"
   },
   "browser": {

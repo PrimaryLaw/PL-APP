@@ -16,7 +16,7 @@ import { eq } from "drizzle-orm";
 import { ThemeProvider } from "next-themes"
 import { redirect } from "next/navigation";
 import Image from 'next/image'; // Import the Image component
-import plLogo from 'src/assets/plogo_mainGreen.png';
+import plLogo from '../assets/plogo_mainGreen.png';
 
 
 
