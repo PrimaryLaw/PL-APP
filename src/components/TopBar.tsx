@@ -31,7 +31,7 @@ interface TopBarProps {
 const TopBar = ({ currentPage, buttonBack, chatId }: TopBarProps) => {
 
    // Determine the button text and href based on buttonBack value
-   const buttonText = buttonBack ? "< back to chats" : "My contracts";
+   const buttonText = buttonBack ? "< back" : "My contracts";
    const buttonHref = buttonBack ? `/chat/${chatId}` : `/contractslist/${chatId}`;
  
   return (
