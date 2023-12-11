@@ -3,7 +3,7 @@ import React from "react";
 import { Input } from "./ui/input";
 import { useChat } from "ai/react";
 import { Button } from "./ui/button";
-import { XSquare } from "lucide-react";
+import { XSquare, FileText, FileWarning, Scale ,BookMarked } from "lucide-react";
 import MessageList from "./MessageList";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -13,6 +13,20 @@ import InsightChat from "@/components/InsightChat";
 type Props = { chatId: number, userId: string };
 
 const InsightsComponent = ({ chatId, userId }: Props) => {
+    // Define your insights as objects
+  const insights = [
+    { title: 'Summarize', contentInsight: 'Please provide a summary complete regarding this contract.', insightIcon: <FileText /> },
+    { title: 'Risks', contentInsight: 'Please provide the risks of this contract.', insightIcon: <FileWarning /> },
+    { title: 'Obligations & Rights', contentInsight: 'Please provide the obligations and rights of this contract.', insightIcon: <Scale/> },
+    { title: 'Liability & Indemnities', contentInsight: 'Please provide the liability and indemnities of this contract.', insightIcon: <BookMarked /> },
+  ];
+
+
+
+
+
+
+
   const { data, isLoading } = useQuery({
     queryKey: ["chat", chatId],
     queryFn: async () => {
@@ -46,45 +60,28 @@ const InsightsComponent = ({ chatId, userId }: Props) => {
       <div className="overflow-x-auto rounded-lg border border-defaultWhite oveflow-scroll bg-defaultWhite">
         <div className="flex-auto p-4 pt-6">
           <ul className="flex flex-col pl-0 mb-0 rounded-lg">
-            <li className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
+            {/* 
+             <li className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
                 <InsightChat chatId={chatId} title={'Summarize'} insight="Please provide an summary complete regarding this contract." />
             </li>
             <li className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
-              <div className="flex flex-col">
-                <h6 className="leading-normal text-sm">
-                  <i className="mr-2 fas fa-file-alt text-slate-700" aria-hidden="true"></i> Risks
-                </h6>
-              </div>
-              <div className="ml-auto text-right">
-                <button className="bg-transparent hover:bg-purple-500 text-purple-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                  Generate
-                </button>
-              </div>
+            <InsightChat chatId={chatId} title={'Risks'} insight="Please provide the risks of this contract." />
             </li>
             <li className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
-              <div className="flex flex-col">
-                <h6 className="leading-normal text-sm">
-                  <i className="mr-2 fas fa-file-alt text-slate-700" aria-hidden="true"></i> Obligations & Rights
-                </h6>
-              </div>
-              <div className="ml-auto text-right">
-                <button className="bg-transparent hover:bg-purple-500 text-purple-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                  Generate
-                </button>
-              </div>
+            <InsightChat chatId={chatId} title={'Obligations & Rights'} insight="Please provide the the obligations and rights of this contract." />
             </li>
             <li className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
-              <div className="flex flex-col">
-                <h6 className="leading-normal text-sm">
-                  <i className="mr-2 fas fa-file-alt text-slate-700" aria-hidden="true"></i> Liability & Indemnities
-                </h6>
-              </div>
-              <div className="ml-auto text-right">
-                <button className="bg-transparent hover:bg-purple-500 text-purple-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                  Generate
-                </button>
-              </div>
+            <InsightChat chatId={chatId} title={'Liability & Indemnities'} insight="Please provide the liability and indemnities of this contract." />
             </li>
+            
+            
+            
+            */}
+            {insights.map((insight) => (
+              <li key={insight.title} className="relative items-baseline flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
+                <InsightChat chatId={chatId} title={insight.title} insight={insight.contentInsight} insightIcon={insight.insightIcon} />
+              </li>
+            ))}
           </ul>
         </div>
       </div>

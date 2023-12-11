@@ -12,10 +12,15 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
+        "sm": "360px",
         "2xl": "1400px",
+        'tall': { 'raw': '(min-width: 390px)' },
       },
     },
     extend: {
+      screens: {
+        'xs': '360px', // or whatever value you deem appropriate
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -31,6 +36,7 @@ module.exports = {
         mainGrey: '#f8f9fa',
         defaultWhite: '#ffffff',
         mainGreen: '#04b88f',
+        mainGreenTransparent: '#04b88f30',
         darkGreen: '#0b4d3e',
         transparentGreen: '#07b38c33',
         allblack: '#000000',
@@ -63,6 +69,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontSize: {
+        '8xl': '6rem', // or whatever size you prefer
       },
       borderRadius: {
         lg: "var(--radius)",

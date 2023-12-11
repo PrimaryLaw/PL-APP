@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "export NODE_OPTIONS='--max-old-space-size=8192' && next dev",
+    "dev-windows": "set NODE_OPTIONS='--max-old-space-size=8192' && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -21,6 +22,7 @@
     "@heroicons/react": "^2.0.18",
     "@neondatabase/serverless": "^0.6.0",
     "@next/font": "^14.0.1",
+    "@next/swc-darwin-x64": "^14.0.3",
     "@pinecone-database/doc-splitter": "^0.0.1",
     "@pinecone-database/pinecone": "^1.0.1",
     "@radix-ui/react-slot": "^1.0.2",
@@ -41,6 +43,7 @@
     "encoding": "^0.1.13",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "http": "^0.0.1-security",
     "langchain": "^0.0.150",
     "lucide-react": "^0.274.0",
     "md5": "^2.3.0",
@@ -48,13 +51,14 @@
     "next-themes": "^0.2.1",
     "openai-edge": "^1.2.2",
     "pdf-parse": "^1.1.1",
-    "pdfjs-dist": "^3.10.111",
+    "pdfjs-dist": "^3.11.174",
     "pg": "^8.11.3",
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
+    "sharp": "^0.33.0",
     "stream": "^0.0.2",
     "stripe": "^13.4.0",
     "tailwind-merge": "^1.14.0",
@@ -64,6 +68,13 @@
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.41.1",
+    "@types/pdf-parse": "^1.1.4",
+    "@types/pdfjs-dist": "^2.10.378",
     "netlify-cli": "^16.9.2"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }

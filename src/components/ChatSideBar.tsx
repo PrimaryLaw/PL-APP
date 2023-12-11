@@ -3,6 +3,7 @@ import { DrizzleChat } from "@/lib/db/schema";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
+import TopBar from "@/components/TopBar";
 
 type Props = {
   chats: DrizzleChat[];
@@ -28,6 +29,8 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
     }
   };
 
+  const currPage = 'Contract Analyzer / My contracts'; // Define the current page name
+
   return (
     <div className="w-full h-[100vh] overflow-y-auto soff p-4 text-gray-200 bg-transparent scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar-track:!bg-slate-100 scrollbar-thumb:!rounded scrollbar-thumb:!bg-slate-300">
       <Link href="/" className="hidden">
@@ -39,7 +42,7 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
           New Chat
         </Button>
       </Link>
-
+      <TopBar currentPage={currPage} buttonBack={true} chatId={chatId}/>
       <div className="flex">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-darkGreen">
           <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clipRule="evenodd" />
@@ -51,7 +54,7 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
       </div>
 
 
-      <div className="content-legislative-doc">
+      <div className="content-legislative-doc bg-defaultWhite p-3 border border-mainGreen mt-4 rounded-lg">
         <fieldset className="space-y-4">
           <legend className="sr-only">Delivery</legend>
           {chats.map((document) => (
@@ -67,10 +70,10 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
             />
             <label
               htmlFor={`${document.id}`}
-              className="flex cursor-pointer items-center justify-between rounded-lg border border-mainGreen bg-white p-4 text-sm font-medium shadow-sm hover:border-mainGreen peer-checked:border-mainGreen px-3 peer-checked:text-defaultWhite peer-checked:bg-transparentGreen peer-checked:ring-1 peer-checked:ring-mainGreen"
+              className="flex cursor-pointer items-center justify-between border-x-0 border-t-0 border-b-1 border border-mainGreen bg-white p-4 text-sm font-medium shadow-sm hover:border-mainGreen peer-checked:border-mainGreen px-3 peer-checked:text-defaultWhite peer-checked:bg-transparentGreen peer-checked:ring-1 peer-checked:ring-mainGreen"
             >
-              <p className="text-gray-700 whitespace-nowrap text-ellipsis">{document.name}</p>
-              <p className="text-gray-900"></p>
+              <p className="text-normalGrey whitespace-nowrap text-ellipsis">{document.name}</p>
+              <p className="text-gray-900">testeee</p>
             </label>
           </div>))}
         </fieldset>

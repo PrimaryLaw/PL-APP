@@ -21,7 +21,7 @@ const MessageInsight = ({ message, isLoading }: Props) => {
     <div className="flex flex-col gap-2 px-4 overflow-hidden h-auto  bg-defaultWhite rounded-lg border border-defaultWhite">
       {
           <div
-            className="justify-start pr-10 bg-mainGrey border border-defaultWhite flex"
+            className="justify-start mr-10 bg-mainGrey border border-defaultWhite flex"
           >
             <div
               className={cn(

@@ -4,9 +4,9 @@ import MessageInsight from "./MessageInsight";
 import { XSquare } from "lucide-react";
 import axios from "axios";
 
-type Props = { chatId: number, title: string, insight: string };
+type Props = { chatId: number, title: string, insight: string, insightIcon: string };
 
-const InsightChat = ({ chatId, insight, title }: Props) => {
+const InsightChat = ({ chatId, insight, title, insightIcon}: Props) => {
   const [isOpen, setIsOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -31,17 +31,18 @@ const InsightChat = ({ chatId, insight, title }: Props) => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="flex">
-        <div className="flex flex-col">
-          <h6 className="leading-normal text-sm">
-            <i className="mr-2 fas fa-file-alt text-slate-700" aria-hidden="true"></i> {title}
+      <div className="flex items-center">
+        <div className="flex">
+           {insightIcon}
+          <h6 className="mb-0 ml-2 text-sm  capitalize font-semibold leading-normal text-normalGrey">
+         {title}
           </h6>
         </div>
         <div className="ml-auto text-right">
           <form
           >
-            <button type="button" onClick={() => submit()}  className="bg-transparent hover:bg-purple-500 text-purple-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-              Generate
+            <button type="button" onClick={() => submit()}  className="bg-transparent hover:bg-mainGreen text-mainGreen font-semibold hover:text-defaultWhite py-2 px-4 border border-mainGreen hover:border-transparent rounded">
+              Generate  
             </button>
           </form>
         </div>

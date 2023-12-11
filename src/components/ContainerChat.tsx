@@ -25,7 +25,7 @@ const ContainerChat = ({ chatId, userId, currentChat }: Props) => {
     };
 
     return (
-        <div className="flex w-full h-[100vh] overflow-scroll">
+        <div className="md:flex w-full h-[100vh] overflow-scroll sm:flex-none lg:flex xs:flex-col-reverse lg:flex-row">
 
 
             {/* chat sidebar 

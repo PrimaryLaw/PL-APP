@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import Providers from "@/components/Providers";
 import { Toaster } from "react-hot-toast";
+import Head from 'next/head';
+
 
 const inter = Inter({ subsets: ["latin"] });
 

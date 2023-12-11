@@ -15,7 +15,7 @@ export async function POST(req: Request, res: Response) {
   try {
     const body = await req.json();
     const { file_key, file_name } = body;
-    await loadS3IntoPinecone(file_key);
+   // await loadS3IntoPinecone(file_key);
 
     function removeExtension(filename: string) {
       return filename.replace(/\.[^/.]+$/, "");
@@ -43,7 +43,7 @@ export async function POST(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { error: "Create chat - Internal server error" },
+      { error: "Error - please try again" },
       { status: 500 }
     );
   }
