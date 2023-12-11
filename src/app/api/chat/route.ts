@@ -10,6 +10,7 @@ import { extractPdfText } from '@/lib/pdftotext'; // Adjust the import path as n
 
 
 
+
 export const runtime = "edge";
 
 const config = new Configuration({
@@ -20,12 +21,16 @@ const openai = new OpenAIApi(config);
 
 export async function POST(req: Request) {
   try {
+    console.log('######atualmente aqui ######')
     const { messages, chatId, userId } = await req.json();
 
     const _chats = await db.select().from(chats).where(eq(chats.id, chatId));
+    console.log('chats: '+_chats)
     // Only select the pdfUrl column since that's all we need
     const currPdf = _chats[0].pdfUrl;
+    console.log('LINK PARA O PDF: '+currPdf)
     if (_chats.length != 1) {
+
       return NextResponse.json({ error: "chat not found" }, { status: 404 });
     }
     const fileKey = _chats[0].fileKey;
@@ -33,16 +38,19 @@ export async function POST(req: Request) {
 
     //call function extractPdfText em /lib/pdftotext.ts
     const pdfText = await extractPdfText(currPdf);
-
-    
-
+   // const pdfText = await extractPdfText('https://globalforgivenessinitiative.com/user/pages/download/Quatro-Passos-para-o-Perdao-William-Fergus-Martin.pdf');
+   // https://chatpdf-primary-law.s3.eu-north-1.amazonaws.com/uploads/1702253023701contract_test.pdf
 
     const context = await getContext(lastMessage.content, fileKey);
 
 
+    console.log('HERE IS THE PDFTEXT: '+pdfText)
+    console.log('HERE IS THE CONTEXT: '+context)
+
+
     const prompt = {
       role: "system",
-      content: `The user uploaded this contract you will access and read it ${currPdf}.
+      content: `The user uploaded this contract you will access and read it ${pdfText}.
       As a legal expert, your primary function is to meticulously review and analyze it.
       Your role is to remain observant and wait for specific user instructions or questions before you provide insights.
       When interacting with users, you will employ your extensive knowledge of contractual language, obligations, rights, and legal principles to provide detailed analyses of the contracts submitted for review.
